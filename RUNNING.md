@@ -75,3 +75,9 @@ python scripts/generate_hw4.py
 
 Після регенерації byte hash має збігатися з evidence/dataset-manifest.json.
 Зміна turns, probes, oracle чи негативного pattern змінює hash і потребує нового forecast commit до live runs.
+
+## Редакційна версія документів
+
+build_report.py та finalize_docs.py створюють повні чернетки з результатів.
+Фінальні multi-turn-test-plan.md і README.md скорочено редакційно; їх повторна генерація поверне розгорнутий текст.
+Для перевірки наявної здачі достатньо analyze_hw4.py та verify_artifacts.py — вони не переписують авторські документи.
