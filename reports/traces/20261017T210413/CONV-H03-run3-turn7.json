@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 3,
+  "turn": 7,
+  "user": "Explain what a conversion spread means in plain language.",
+  "answer": "A conversion spread is the extra margin the bank adds to the market exchange rate when it converts one currency into another.\n\n- **Mid-market rate:** the midpoint between buy and sell prices on the currency markets, the \"real\" rate.\n- **Spread:** the bank's markup on top of that rate. You get slightly less foreign currency than the mid rate would give you.\n\nFor your account, the Tier 1 spread is **1.5%** of the converted amount. For example, if a conversion were worth EUR 1,000 at the mid rate, the 1.5% spread would be EUR 15.00 of cost to you.\n\nThe spread doesn't apply to every conversion. Your first **EUR 500** of conversions each month are free. Once that allowance is used up, the spread applies to the full converted amount. I can't see how much of your allowance is left this month, so I can't say whether a specific payment would be free. I can run a full FX quote for a specific amount if you'd like.",
+  "trace": {
+    "request_id": "e1d23b3abd9140dd",
+    "name": "agent.request",
+    "span_id": "c81a6a4a6edf40c4",
+    "started_at": 1792271455.074418,
+    "ended_at": 1792271457.9785314,
+    "duration_ms": 2904.1,
+    "attributes": {
+      "session.id": "ce57b273ae18",
+      "dialog.step_number": 7,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6782,
+      "gen_ai.usage.total_output_tokens": 429
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "b7f1f93844384f12",
+        "started_at": 1792271455.074576,
+        "ended_at": 1792271457.9783955,
+        "duration_ms": 2903.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6782,
+          "gen_ai.usage.output_tokens": 429
+        },
+        "children": []
+      }
+    ]
+  }
+}

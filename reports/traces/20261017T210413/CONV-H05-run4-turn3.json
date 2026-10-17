@@ -1,0 +1,123 @@
+{
+  "case": "CONV-H05",
+  "run": 4,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily transfer limit on the tier1 account (ACC-1005) is **EUR 5,000.00**.\n\n- Daily limit: EUR 5,000.00\n- Spent today: EUR 0.00\n- Remaining today: EUR 5,000.00\n\nFor reference, your monthly limit is EUR 50,000.00, with EUR 35.50 used so far this month and EUR 49,964.50 remaining.",
+  "trace": {
+    "request_id": "c3a55fb9c6b64af5",
+    "name": "agent.request",
+    "span_id": "335c157b9a0741db",
+    "started_at": 1792271841.370377,
+    "ended_at": 1792271849.1723442,
+    "duration_ms": 7802.0,
+    "attributes": {
+      "session.id": "53cb290b1bbd",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6668,
+      "gen_ai.usage.total_output_tokens": 407
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "fd3647732b974115",
+        "started_at": 1792271841.3705542,
+        "ended_at": 1792271846.0037322,
+        "duration_ms": 4633.2,
+        "attributes": {
+          "summary.text": "**Case summary: TX-0401 dispute inquiry (no dispute filed)**\n\n**Customer:** CUS-0004, Danylo Kovalenko, tier1\n**Account:** ACC-1005, EUR, balance 1,310.20 EUR\n\n**Disputed transaction: TX-0401**\n- Amount: 240.00 EUR\n- Transaction date: 2026-07-20 (kept with the case per the customer's request)\n- Merchant: TechMart Online\n- Type: card, outgoing, status settled\n- Customer's complaint: goods never arrived\n\n**Eligibility (tool check_dispute_eligibility, as_of 2026-09-15):**\n- Eligible: yes\n- Reason code: `goods_not_received`\n- Filing window: 90 days from transaction date\n- Deadline: 2026-10-18\n- Checks passed: reason code, transaction status, window, compliance hold\n\n**Knowledge base reference (disputes.md):** goods_not_received window is 90 days. Card reason-code review target is 10 business days. Complex cases with a foreign acquirer may take up to 45 calendar days, and the customer is notified if so.\n\n**Related transactions (not part of this dispute):**\n- TX-0402: 240.00 EUR, TechMart Online, 2026-07-14, card, settled, outgoing\n- TX-0403: 35.50 EUR, CityParking, 2026-09-01, card, settled, outgoing\n\n**Actions and commitments:**\n- No dispute has been created or submitted. The customer asked to discuss only this charge.\n- The agent stated that a dispute can be opened on the customer",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "3066be625c1449b8",
+        "started_at": 1792271846.0039914,
+        "ended_at": 1792271847.8306754,
+        "duration_ms": 1826.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3148,
+          "gen_ai.usage.output_tokens": 269
+        },
+        "children": []
+      },
+      {
+        "name": "tool.get_account",
+        "span_id": "6eb0091009fb4b43",
+        "started_at": 1792271847.8309507,
+        "ended_at": 1792271847.8342888,
+        "duration_ms": 3.3,
+        "attributes": {
+          "tool.name": "get_account",
+          "tool.arguments": {},
+          "tool.result": {
+            "customer": {
+              "id": "CUS-0004",
+              "name": "Danylo Kovalenko",
+              "tier": "tier1"
+            },
+            "accounts": [
+              {
+                "id": "ACC-1005",
+                "customer_id": "CUS-0004",
+                "currency": "EUR",
+                "balance": 1310.2,
+                "tier": "tier1",
+                "holder": "Danylo Kovalenko"
+              }
+            ]
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "e7e0f8ea4bef404f",
+        "started_at": 1792271847.8344884,
+        "ended_at": 1792271847.8361719,
+        "duration_ms": 1.7,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "9fea598da80b43f6",
+        "started_at": 1792271847.8362787,
+        "ended_at": 1792271849.1722467,
+        "duration_ms": 1336.0,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3520,
+          "gen_ai.usage.output_tokens": 138
+        },
+        "children": []
+      }
+    ]
+  }
+}

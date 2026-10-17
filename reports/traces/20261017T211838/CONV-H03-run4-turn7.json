@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H03",
+  "run": 4,
+  "turn": 7,
+  "user": "Explain what a conversion spread means in plain language.",
+  "answer": "The **spread** is the extra margin the bank adds to a currency conversion. It is the difference between the market rate and the rate you actually get.\n\n- **Mid-market rate:** the midpoint between the buying and selling prices in the currency market. This is the \"real\" exchange rate.\n- **Spread:** a percentage added on top of that rate, which the bank keeps as its charge for converting.\n\nFor your tier, the spread is **1.5%** of the converted amount, and it applies only after your **EUR 500** monthly free allowance is used up.\n\nAs an illustration only (the rate below is made up, not a live quote), suppose the mid-market rate is 1 EUR = 1.10 USD and you convert EUR 100 after the allowance is used:\n\n- The spread is 1.5% of EUR 100, which is EUR 1.50.\n- The remaining EUR 98.50 converts at the mid rate, giving about **USD 108.35**.\n- Without the spread you would receive USD 110.00. The difference is the cost of the spread.\n\nIf the conversion fits within your remaining free allowance, no spread is charged. I can run an exact quote with the current rate if you tell me the amount.\n\nI also need to correct my earlier answer on SEPA transfers. I said the knowledge base didn't state a fee for them. The tariff schedule lists a **flat fee of EUR 0.35** and **0%** percentage fee for SEPA transf",
+  "trace": {
+    "request_id": "3c1fad3d00694448",
+    "name": "agent.request",
+    "span_id": "026bbf91eac9401b",
+    "started_at": 1792272443.9258413,
+    "ended_at": 1792272449.7969952,
+    "duration_ms": 5871.2,
+    "attributes": {
+      "session.id": "3893426595be",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6491,
+      "gen_ai.usage.total_output_tokens": 1024
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "8a5d474a206c4e41",
+        "started_at": 1792272443.9262044,
+        "ended_at": 1792272449.7969701,
+        "duration_ms": 5870.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6491,
+          "gen_ai.usage.output_tokens": 1024
+        },
+        "children": []
+      }
+    ]
+  }
+}

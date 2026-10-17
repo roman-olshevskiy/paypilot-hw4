@@ -1,0 +1,94 @@
+{
+  "case": "CONV-H01",
+  "run": 4,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily transfer limit on file for tier1 is **EUR 5,000**. As of today (2026-09-15) you have used EUR 0 of it, so **EUR 5,000 remains** for today.\n\nThe limit tool reports transfer limits and does not break out card spending separately, so I can't confirm from it whether card payments count against this same figure. Your monthly limit is EUR 50,000, with EUR 35.50 used so far this month.",
+  "trace": {
+    "request_id": "6c89f8aaac6e4bbb",
+    "name": "agent.request",
+    "span_id": "4dc8d9c2b5c84c6e",
+    "started_at": 1792271156.7115896,
+    "ended_at": 1792271165.3762627,
+    "duration_ms": 8664.7,
+    "attributes": {
+      "session.id": "570da6c36a37",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6207,
+      "gen_ai.usage.total_output_tokens": 519
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "90a46037a1644ef4",
+        "started_at": 1792271156.7117615,
+        "ended_at": 1792271161.5729334,
+        "duration_ms": 4861.2,
+        "attributes": {
+          "summary.text": "**Case summary: TX-0401 dispute inquiry (not filed)**\n\n**Customer:** CUS-0004, Danylo Kovalenko, tier1\n**Account:** ACC-1005, EUR, balance 1310.20 EUR, tier1\n\n**Disputed transaction:** TX-0401\n- Amount: 240.00 EUR\n- Date: 2026-07-20\n- Merchant: TechMart Online\n- Direction: out (debit), card, status settled\n- Customer reports: goods never arrived\n\n**Eligibility (tool check_dispute_eligibility):** eligible = true\n- Reason code: `goods_not_received`\n- Window: 90 days from transaction date\n- As of: 2026-09-15\n- Deadline: 2026-10-18\n- Checks passed: reason_code, tx_status, window, compliance_hold\n\n**Knowledge base confirmation (disputes.md):** goods_not_received window = 90 days. Card reason-code review target is 10 business days. Complex foreign-acquirer cases may take up to 45 calendar days, and the customer is notified if so (not established as applicable here).\n\n**Other transactions on ACC-1005 (context only, not under dispute):**\n- TX-0402: 2",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "fb71938647eb4641",
+        "started_at": 1792271161.5729914,
+        "ended_at": 1792271163.3485243,
+        "duration_ms": 1775.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3016,
+          "gen_ai.usage.output_tokens": 278
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "3f681dfdc7da4248",
+        "started_at": 1792271163.3486736,
+        "ended_at": 1792271163.3512743,
+        "duration_ms": 2.6,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "b5d7320b9b534fab",
+        "started_at": 1792271163.3514833,
+        "ended_at": 1792271165.376234,
+        "duration_ms": 2024.8,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3191,
+          "gen_ai.usage.output_tokens": 241
+        },
+        "children": []
+      }
+    ]
+  }
+}

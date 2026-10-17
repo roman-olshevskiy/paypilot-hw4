@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 1,
+  "turn": 9,
+  "user": "The amount is 240 euro, as I said at the start.",
+  "answer": "Yes, that is correct. TX-0401 is a EUR 240.00 card payment to TechMart Online, and the reason code is `goods_not_received`.\n\nNothing has been filed. The next step is yours. If you want me to open the dispute, tell me explicitly and I will proceed. If TX-0402 was a second charge for the same order, let me know and I can check eligibility for a `duplicate_charge` dispute on that transaction instead.",
+  "trace": {
+    "request_id": "06c1d020243248d8",
+    "name": "agent.request",
+    "span_id": "c719a44854914bda",
+    "started_at": 1792271373.2744613,
+    "ended_at": 1792271375.2668376,
+    "duration_ms": 1992.4,
+    "attributes": {
+      "session.id": "27b7063b380a",
+      "dialog.step_number": 9,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7672,
+      "gen_ai.usage.total_output_tokens": 234
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "088cec1d619241c7",
+        "started_at": 1792271373.2746217,
+        "ended_at": 1792271375.266809,
+        "duration_ms": 1992.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 7672,
+          "gen_ai.usage.output_tokens": 234
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 1,
+  "turn": 10,
+  "user": "For that original charge, state its applicable filing window in days and the exact filing deadline. Do I still have time? Do not file anything.",
+  "answer": "The filing window for `goods_not_received` is **90 days** from the transaction date. For TX-0401, dated 2026-07-20, the **filing deadline is 2026-10-18**.\n\nAs of today, 2026-09-15, **33 days remain**, so you still have time. I have not filed anything.",
+  "trace": {
+    "request_id": "bd9168c93dea4e9f",
+    "name": "agent.request",
+    "span_id": "d2b862d312714335",
+    "started_at": 1792271375.3018718,
+    "ended_at": 1792271377.542551,
+    "duration_ms": 2240.7,
+    "attributes": {
+      "session.id": "27b7063b380a",
+      "dialog.step_number": 10,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7859,
+      "gen_ai.usage.total_output_tokens": 320
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "032b45a4a3c44b7f",
+        "started_at": 1792271375.302063,
+        "ended_at": 1792271377.542497,
+        "duration_ms": 2240.4,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 7859,
+          "gen_ai.usage.output_tokens": 320
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H01",
+  "run": 1,
+  "turn": 7,
+  "user": "For that original charge, state its applicable filing window in days and the exact filing deadline. Do I still have time? Do not file anything.",
+  "answer": "The applicable filing window for `goods_not_received` is **90 days** from the transaction date (disputes.md, reason-code table).\n\nFor TX-0401 (EUR 240.00, dated 2026-07-20), the **filing deadline is 2026-10-18**. Today is 2026-09-15, so you have **33 days** left.\n\nNothing has been filed. If you want to open the dispute, confirm and I'll run the eligibility check first. I'll only file if that check passes.",
+  "trace": {
+    "request_id": "8f429e1a4eb34007",
+    "name": "agent.request",
+    "span_id": "d1cdab0ba63e4e9d",
+    "started_at": 1792270858.7278557,
+    "ended_at": 1792270864.9205787,
+    "duration_ms": 6192.7,
+    "attributes": {
+      "session.id": "9dc8497e5664",
+      "dialog.step_number": 7,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 11614,
+      "gen_ai.usage.total_output_tokens": 901
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "01af41953ee849d4",
+        "started_at": 1792270858.7280593,
+        "ended_at": 1792270861.9439962,
+        "duration_ms": 3215.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5469,
+          "gen_ai.usage.output_tokens": 392
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "f66a34049e7b46da",
+        "started_at": 1792270861.944043,
+        "ended_at": 1792270861.9448671,
+        "duration_ms": 0.8,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute filing window goods_not_received days from transaction date"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute filing window goods_not_received days from transaction date",
+            "fragments": [
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 1.6583,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "glossary.md#s3",
+                "doc": "glossary.md",
+                "score": 1.2247,
+                "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+              },
+              {
+                "id": "limits-operations.md#s5",
+                "doc": "limits-operations.md",
+                "score": 1.0206,
+                "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+              },
+              {
+                "id": "disputes.md#s2",
+                "doc": "disputes.md",
+                "score": 0.889,
+                "text": "Payment dispute rules\n## Eligibility conditions\nA dispute is eligible only if all of the following hold: the reason code is\nvalid; the transaction status is settled; the transaction date is within the\nreason code's window relative to the current date; and no customer-level\nrestriction applies (for example, an account under compliance review cannot\nopen new disputes until the review concludes)."
+              }
+            ]
+          },
+          "retrieval.query": "dispute filing window goods_not_received days from transaction date",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes.md#s1",
+              "score": 1.6583,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window "
+            },
+            {
+              "id": "glossary.md#s3",
+              "score": 1.2247,
+              "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+            },
+            {
+              "id": "limits-operations.md#s5",
+              "score": 1.0206,
+              "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+            },
+            {
+              "id": "disputes.md#s2",
+              "score": 0.889,
+              "text": "Payment dispute rules\n## Eligibility conditions\nA dispute is eligible only if all of the following hold: the reason code is\nvalid; the transaction status is set"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "864ae2f5fa784a41",
+        "started_at": 1792270861.9449341,
+        "ended_at": 1792270864.9205546,
+        "duration_ms": 2975.6,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6145,
+          "gen_ai.usage.output_tokens": 509
+        },
+        "children": []
+      }
+    ]
+  }
+}

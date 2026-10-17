@@ -1,0 +1,131 @@
+{
+  "case": "CONV-H03",
+  "run": 3,
+  "turn": 10,
+  "user": "For that original charge, state its applicable filing window in days and the exact filing deadline. Do I still have time? Do not file anything.",
+  "answer": "For a goods_not_received dispute, the window is **90 days from the transaction date**. Both TechMart Online charges are still within it, based on today's date of 15 September 2026:\n\n- **TX-0402** (14 July 2026): deadline **12 October 2026**, about **27 days** left\n- **TX-0401** (20 July 2026): deadline **18 October 2026**, about **33 days** left\n\nYes, you still have time for either charge. Nothing has been filed. If you tell me which charge you mean and confirm the reason code, I'll run the eligibility check first and open the dispute only if it passes.",
+  "trace": {
+    "request_id": "f54a2d8f523b40af",
+    "name": "agent.request",
+    "span_id": "992e7844b0944215",
+    "started_at": 1792272410.3018117,
+    "ended_at": 1792272416.23002,
+    "duration_ms": 5928.2,
+    "attributes": {
+      "session.id": "bf1ee227dd52",
+      "dialog.step_number": 10,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 14511,
+      "gen_ai.usage.total_output_tokens": 976
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "6dbe34d95fd54c4c",
+        "started_at": 1792272410.302404,
+        "ended_at": 1792272411.8455644,
+        "duration_ms": 1543.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6931,
+          "gen_ai.usage.output_tokens": 178
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "6966270116274ff1",
+        "started_at": 1792272411.845632,
+        "ended_at": 1792272411.8469615,
+        "duration_ms": 1.3,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute filing window days goods not received card payment"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute filing window days goods not received card payment",
+            "fragments": [
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 1.3568,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "limits-operations.md#s5",
+                "doc": "limits-operations.md",
+                "score": 1.0206,
+                "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+              },
+              {
+                "id": "security-policy.md#s2",
+                "doc": "security-policy.md",
+                "score": 0.7845,
+                "text": "Customer security policy\n## Card blocking\nA customer may block a card immediately. Blocking is reversible for 30 days;\nafter that a replacement card must be ordered."
+              },
+              {
+                "id": "disputes-process.md#s4",
+                "doc": "disputes-process.md",
+                "score": 0.7625,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+              }
+            ]
+          },
+          "retrieval.query": "dispute filing window days goods not received card payment",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes.md#s1",
+              "score": 1.3568,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window "
+            },
+            {
+              "id": "limits-operations.md#s5",
+              "score": 1.0206,
+              "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+            },
+            {
+              "id": "security-policy.md#s2",
+              "score": 0.7845,
+              "text": "Customer security policy\n## Card blocking\nA customer may block a card immediately. Blocking is reversible for 30 days;\nafter that a replacement card must be ord"
+            },
+            {
+              "id": "disputes-process.md#s4",
+              "score": 0.7625,
+              "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "88ae5e0624cb4994",
+        "started_at": 1792272411.8470852,
+        "ended_at": 1792272416.2300022,
+        "duration_ms": 4382.9,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 7580,
+          "gen_ai.usage.output_tokens": 798
+        },
+        "children": []
+      }
+    ]
+  }
+}

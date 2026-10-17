@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "chat_requests": 404,
+  "independent_sessions": 52,
+  "full_dialogs_per_profile": 25,
+  "raw_report_hashes_valid": true,
+  "settings_restored_all_runs": true,
+  "prior_golden_hashes_unchanged": true,
+  "tracked_secret_prefix_scan": "no credentials found; local scan is not a security guarantee"
+}

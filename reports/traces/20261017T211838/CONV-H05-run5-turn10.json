@@ -1,0 +1,131 @@
+{
+  "case": "CONV-H05",
+  "run": 5,
+  "turn": 10,
+  "user": "For that original charge, state its applicable filing window in days and the exact filing deadline. Do I still have time? Do not file anything.",
+  "answer": "Under the goods-not-received code, the filing window is **90 days from the transaction date**. Today is 15 September 2026, so you still have time for either TechMart Online payment:\n\n- **TX-0402** (EUR 240.00, 2026-07-14): deadline **2026-10-12**, about 27 days left\n- **TX-0401** (EUR 240.00, 2026-07-20): deadline **2026-10-18**, about 33 days left\n\nI haven't filed anything. Tell me which transaction it is, and I'll run the eligibility check under goods not received. You can then decide whether to proceed.",
+  "trace": {
+    "request_id": "f11fb838f43f4931",
+    "name": "agent.request",
+    "span_id": "4a0f562d5324418a",
+    "started_at": 1792273000.6019032,
+    "ended_at": 1792273005.7509882,
+    "duration_ms": 5149.1,
+    "attributes": {
+      "session.id": "bdf448645229",
+      "dialog.step_number": 10,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 13536,
+      "gen_ai.usage.total_output_tokens": 811
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "4350f06a8b064ea9",
+        "started_at": 1792273000.6023312,
+        "ended_at": 1792273002.288371,
+        "duration_ms": 1686.0,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6452,
+          "gen_ai.usage.output_tokens": 196
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "1c5798d84bff466c",
+        "started_at": 1792273002.288432,
+        "ended_at": 1792273002.2895753,
+        "duration_ms": 1.1,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute filing window days goods not received"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute filing window days goods not received",
+            "fragments": [
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 1.206,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "limits-operations.md#s5",
+                "doc": "limits-operations.md",
+                "score": 1.0206,
+                "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+              },
+              {
+                "id": "glossary.md#s3",
+                "doc": "glossary.md",
+                "score": 0.6124,
+                "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+              },
+              {
+                "id": "disputes-process.md#s4",
+                "doc": "disputes-process.md",
+                "score": 0.61,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+              }
+            ]
+          },
+          "retrieval.query": "dispute filing window days goods not received",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes.md#s1",
+              "score": 1.206,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window "
+            },
+            {
+              "id": "limits-operations.md#s5",
+              "score": 1.0206,
+              "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+            },
+            {
+              "id": "glossary.md#s3",
+              "score": 0.6124,
+              "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+            },
+            {
+              "id": "disputes-process.md#s4",
+              "score": 0.61,
+              "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "4843a98e51854c1e",
+        "started_at": 1792273002.2896633,
+        "ended_at": 1792273005.7509565,
+        "duration_ms": 3461.3,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 7084,
+          "gen_ai.usage.output_tokens": 615
+        },
+        "children": []
+      }
+    ]
+  }
+}

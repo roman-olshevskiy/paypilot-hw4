@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H01",
+  "run": 3,
+  "turn": 6,
+  "user": "The amount is 240 euro, as I said at the start.",
+  "answer": "You're right, the amount is EUR 240.00, which matches what I said. I also haven't filed anything. TX-0401 is still only under discussion, and I'll only open a dispute if you ask me to.",
+  "trace": {
+    "request_id": "a5b689bb94a04797",
+    "name": "agent.request",
+    "span_id": "b33a07f55751449e",
+    "started_at": 1792271142.3703272,
+    "ended_at": 1792271143.9601638,
+    "duration_ms": 1589.8,
+    "attributes": {
+      "session.id": "31aca05112d2",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4789,
+      "gen_ai.usage.total_output_tokens": 154
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "c4670f16ff8c4afb",
+        "started_at": 1792271142.3704815,
+        "ended_at": 1792271143.9601374,
+        "duration_ms": 1589.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4789,
+          "gen_ai.usage.output_tokens": 154
+        },
+        "children": []
+      }
+    ]
+  }
+}

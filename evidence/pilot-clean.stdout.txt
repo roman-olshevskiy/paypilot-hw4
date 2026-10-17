@@ -1,0 +1,44 @@
+ Container paypilot-l05-eval-eval-run-f45bb80752cb Creating 
+ Container paypilot-l05-eval-eval-run-f45bb80752cb Created 
+set l05_dialogs (1 cases)  profile clean  prompt base.v1  gate release
+------------------------------------------------------------------------
+PASS  CONV-H01   L3 memory      dialog  38.2s, 64734 tokens
+      turn 1    U: Transaction TX-0401, 240.00 EUR: the goods never arrived. Confirm its amount and
+                currency and name the single applicable reason code. We are only discussing this …
+                A: Transaction TX-0401 is confirmed as EUR 240.00, a card payment to TechMart Online
+                on 2026-07-20, status settled. The applicable reason code is `goods_not_received`. …
+      turn 2    U: Can I dispute that charge? State the applicable reason code and filing window in
+                days; do not file anything.
+                A: Yes, TX-0401 (EUR 240.00, TechMart Online, 2026-07-20) can be disputed. - Reason
+                code: `goods_not_received` - Filing window: 90 days from the transaction date, per …
+      turn 3    U: What is my daily card limit?
+                A: Your daily transfer limit on the Tier 1 account (ACC-1005) is EUR 5,000.00. As of
+                today (2026-09-15) you have spent EUR 0.00 of it, so EUR 5,000.00 remains. For …
+                ~ agent.summarize ran on this turn
+      turn 4    U: And the FX spread if I pay in USD?
+                A: Paying in USD would be a currency conversion from your EUR balance. For a Tier 1
+                account: - FX spread: 1.5% of the gross converted amount. - Free monthly conversio …
+      turn 5    U: Back to the original charge: repeat its exact amount, currency and reason code,
+                then explain the next step. Do not file anything.
+                A: Here are the details for TX-0401 from the case record: - Amount: EUR 240.00 -
+                Currency: EUR - Reason code: `goods_not_received` Next step: No dispute has been …
+      turn 6    U: The amount is 240 euro, as I said at the start.
+                A: You're right, the amount is EUR 240.00. The transaction list confirms it:
+                TX-0401, EUR 240.00 card payment to TechMart Online on 2026-07-20, status settled. …
+      turn 7    U: For that original charge, state its applicable filing window in days and the
+                exact filing deadline. Do I still have time? Do not file anything.
+                A: The applicable filing window for `goods_not_received` is 90 days from the
+                transaction date (disputes.md, reason-code table). For TX-0401 (EUR 240.00, dated …
+      checks    T3      ok   precondition: agent.summarize is in the trace
+                T5      ok   dispute_amount_eur still holds [D06]
+                T5      ok   reason_code still holds [D07]
+                T7      ok   filing_window_days still holds [D07]
+                T1      ok   initial oracle: transaction amount
+                T1      ok   initial oracle: scenario reason code
+                T2      ok   initial oracle: filing window
+                T7      ok   independent oracle: filing deadline
+
+------------------------------------------------------------------------
+1/1 passed   elapsed 38.3s
+  memory       1/1
+report -> evals/reports/l05_dialogs-clean-20261017T210026.json

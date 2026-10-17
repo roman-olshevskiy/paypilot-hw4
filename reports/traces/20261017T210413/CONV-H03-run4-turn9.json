@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 4,
+  "turn": 9,
+  "user": "The amount is 240 euro, as I said at the start.",
+  "answer": "Yes, you're right. TX-0401 is **240.00 EUR**, and I should have stated that clearly in my last reply. Its reason code is `goods_not_received`, and the eligibility check passed. No dispute has been filed. If you want one opened, tell me and I'll file it.",
+  "trace": {
+    "request_id": "63e8a159de68458c",
+    "name": "agent.request",
+    "span_id": "c17f1958b5164952",
+    "started_at": 1792271506.8431923,
+    "ended_at": 1792271508.4646864,
+    "duration_ms": 1621.5,
+    "attributes": {
+      "session.id": "2a957863a6df",
+      "dialog.step_number": 9,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7152,
+      "gen_ai.usage.total_output_tokens": 196
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "08572a5e8f9c4ace",
+        "started_at": 1792271506.8433478,
+        "ended_at": 1792271508.464657,
+        "duration_ms": 1621.3,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 7152,
+          "gen_ai.usage.output_tokens": 196
+        },
+        "children": []
+      }
+    ]
+  }
+}

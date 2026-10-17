@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 1,
+  "turn": 7,
+  "user": "Explain what a conversion spread means in plain language.",
+  "answer": "A conversion spread is the margin a bank adds to the market exchange rate when it converts one currency into another. The bank takes that margin as its charge for doing the conversion.\n\nFor example, if the market rate is 1 EUR = 1.10 USD and your spread is 1.5%, you would receive about 1.5% less than the market rate, roughly 1.08 USD per euro. On a EUR 1,000 conversion, that margin would cost about EUR 15.\n\nFor Verta Tier 1 customers, the spread is 1.5%, but it applies only after the first EUR 500 of conversions each calendar month. Within that allowance, no spread is charged.\n\nI also need to correct my earlier answer. I said your monthly allowance appeared intact because of the EUR 35.50 card payment on 2026-09-01. That was not supported. I don't know whether that payment involved a conversion, and I have not checked how much of your EUR 500 allowance is left. I can run a quote for a specific amount, which will show the allowance applied.",
+  "trace": {
+    "request_id": "6a8ad44fccda4f72",
+    "name": "agent.request",
+    "span_id": "de882b933bf54952",
+    "started_at": 1792271363.228734,
+    "ended_at": 1792271368.7326326,
+    "duration_ms": 5503.9,
+    "attributes": {
+      "session.id": "27b7063b380a",
+      "dialog.step_number": 7,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6876,
+      "gen_ai.usage.total_output_tokens": 1011
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "91fdd0781221470c",
+        "started_at": 1792271363.2289083,
+        "ended_at": 1792271368.7325878,
+        "duration_ms": 5503.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6876,
+          "gen_ai.usage.output_tokens": 1011
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "case": "CONV-H05",
+  "run": 4,
+  "turn": 7,
+  "user": "What are the public SWIFT transfer fee components?",
+  "answer": "A SWIFT transfer has two fee components, as listed in Verta's tariff schedule:\n\n- **Flat fee:** EUR 15.00\n- **Percentage fee:** 0.3% of the EUR equivalent of the amount sent\n\nExample: for a EUR 1,000 SWIFT transfer, the fee would be EUR 15.00 + (0.3% × EUR 1,000 = EUR 3.00) = **EUR 18.00** in total.\n\nCorrespondent bank charges deducted en route are set by the intermediary banks, not by Verta, and Verta does not refund them. Fees already charged on a SWIFT transfer that is returned by the beneficiary bank are also not refunded.",
+  "trace": {
+    "request_id": "764932334d434e28",
+    "name": "agent.request",
+    "span_id": "4380409bbd374552",
+    "started_at": 1792272943.533976,
+    "ended_at": 1792272947.5368862,
+    "duration_ms": 4002.9,
+    "attributes": {
+      "session.id": "fc990b4fd0c4",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 10855,
+      "gen_ai.usage.total_output_tokens": 293
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "567d1df4f6a84d70",
+        "started_at": 1792272943.5343013,
+        "ended_at": 1792272944.5558538,
+        "duration_ms": 1021.6,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5098,
+          "gen_ai.usage.output_tokens": 62
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "16da946177f646ac",
+        "started_at": 1792272944.5559146,
+        "ended_at": 1792272944.5565388,
+        "duration_ms": 0.6,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "SWIFT transfer fee components"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "SWIFT transfer fee components",
+            "fragments": [
+              {
+                "id": "tariffs.md#s3",
+                "doc": "tariffs.md",
+                "score": 1.0,
+                "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |\n| SWIFT | EUR 15.00 | 0.3% |\n| Card payment | EUR 0.00 | 1.2% |\n\nThe percentage fee is calculated on the EUR equivalent of the transfer amount."
+              },
+              {
+                "id": "fees-detail.md#s1",
+                "doc": "fees-detail.md",
+                "score": 0.9258,
+                "text": "Fee details\n## How the SWIFT fee is composed\nA SWIFT transfer carries a flat fee plus a percentage of the EUR equivalent of\nthe amount sent. Correspondent bank charges deducted en route are outside the\ncontrol of Verta and are not refunded."
+              },
+              {
+                "id": "fees-detail.md#s2",
+                "doc": "fees-detail.md",
+                "score": 0.9177,
+                "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+              },
+              {
+                "id": "transfers.md#s4",
+                "doc": "transfers.md",
+                "score": 0.5774,
+                "text": "Transfers\n## Failed transfers\nA transfer rejected by the beneficiary bank is returned within five business\ndays. Fees already charged on a returned SWIFT transfer are not refunded."
+              }
+            ]
+          },
+          "retrieval.query": "SWIFT transfer fee components",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "tariffs.md#s3",
+              "score": 1.0,
+              "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |"
+            },
+            {
+              "id": "fees-detail.md#s1",
+              "score": 0.9258,
+              "text": "Fee details\n## How the SWIFT fee is composed\nA SWIFT transfer carries a flat fee plus a percentage of the EUR equivalent of\nthe amount sent. Correspondent bank "
+            },
+            {
+              "id": "fees-detail.md#s2",
+              "score": 0.9177,
+              "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+            },
+            {
+              "id": "transfers.md#s4",
+              "score": 0.5774,
+              "text": "Transfers\n## Failed transfers\nA transfer rejected by the beneficiary bank is returned within five business\ndays. Fees already charged on a returned SWIFT transf"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "3f5402aa1ec94bf5",
+        "started_at": 1792272944.5566304,
+        "ended_at": 1792272947.536836,
+        "duration_ms": 2980.2,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5757,
+          "gen_ai.usage.output_tokens": 231
+        },
+        "children": []
+      }
+    ]
+  }
+}

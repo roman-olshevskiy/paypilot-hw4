@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H02",
+  "run": 5,
+  "turn": 5,
+  "user": "For that original charge, state its applicable filing window in days and the exact filing deadline. Do I still have time? Do not file anything.",
+  "answer": "**Filing window:** 90 days from the transaction date.\n\n**Exact deadline:** 2026-10-18. This is 90 days after TX-0401 on 2026-07-20.\n\n**Do you still have time?** Yes. The eligibility check on 2026-09-15 found the charge eligible, and that check recorded 33 days remaining until the deadline. Nothing has been filed.\n\nIf you want to proceed, I need your confirmation before I open the dispute for TX-0401 under `goods_not_received`.",
+  "trace": {
+    "request_id": "8d05297a65614f17",
+    "name": "agent.request",
+    "span_id": "d0101b6e67b1417e",
+    "started_at": 1792271327.8518856,
+    "ended_at": 1792271331.0829566,
+    "duration_ms": 3231.1,
+    "attributes": {
+      "session.id": "293af219666f",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4756,
+      "gen_ai.usage.total_output_tokens": 566
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "a6071e1cdc7144dd",
+        "started_at": 1792271327.8521037,
+        "ended_at": 1792271331.0829046,
+        "duration_ms": 3230.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4756,
+          "gen_ai.usage.output_tokens": 566
+        },
+        "children": []
+      }
+    ]
+  }
+}

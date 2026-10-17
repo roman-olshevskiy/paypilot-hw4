@@ -1,0 +1,6 @@
+{
+  "previous_hash": "47f27ca24364",
+  "reason": "Authentic lesson-05 pilot passed numeric/regex despite explicit loss and request to disambiguate known transaction. Added L4 no-reconfirmation check at probes. Pilot evidence unchanged.",
+  "live_runs_on_revision": 0,
+  "set_hash": "d7ea1a1c292f"
+}

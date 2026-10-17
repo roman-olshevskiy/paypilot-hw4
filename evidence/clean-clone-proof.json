@@ -1,0 +1,7 @@
+{
+  "kit_commit": "d5e763d8613cc6e9e8bfe5d541ad0beb40cb4431",
+  "clean_clone_dataset_sha256": "d7ea1a1c292f498d48c311229d82d3b35f95a98d11df45f9c2996351e355141e",
+  "original_tracked_kit_files_changed": false,
+  "dry_run_passed": true,
+  "source": "Local clean clone of official kit; copied only l05_dialogs.jsonl"
+}

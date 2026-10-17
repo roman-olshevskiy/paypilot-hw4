@@ -1,0 +1,21 @@
+{
+  "profile": "clean",
+  "argv": [
+    "--set",
+    "l05_dialogs",
+    "--gate",
+    "release",
+    "--profile",
+    "clean",
+    "--traces"
+  ],
+  "runner_exit_code": 1,
+  "chat_requests": 195,
+  "reports": [
+    "l05_dialogs-clean-20261017T210413.json"
+  ],
+  "report_sha256": {
+    "l05_dialogs-clean-20261017T210413.json": "99fcda51ad17e35951e93c1107d9e3d6f8559436c9c2c943e9a7fc1ee92e9e2e"
+  },
+  "usage_scope": "Chat/root usage excludes unreported summarizer usage; separate overhead must not be silently treated as zero."
+}

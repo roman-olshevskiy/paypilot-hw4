@@ -1,0 +1,140 @@
+{
+  "case": "CONV-H04",
+  "run": 4,
+  "turn": 3,
+  "user": "For this same charge, what evidence of non-delivery should I keep?",
+  "answer": "For TX-0401 (240.00 EUR, TechMart Online, 2026-07-20), the knowledge base says a dispute may ask you for:\n\n- **Order confirmation** for the purchase\n- **Delivery record**, such as tracking information or proof that the goods were not delivered\n- **Correspondence with the merchant** about the order and the missing goods\n\nIf requested evidence is not supplied within **7 calendar days**, the case is declined, so keep these documents together and be ready to send them quickly.\n\nThe knowledge base does not list any other specific evidence requirements for `goods_not_received`. No dispute has been opened. If you decide to proceed, I can open it under `goods_not_received` for 240.00 EUR once you confirm.",
+  "trace": {
+    "request_id": "4a6993bdced9478e",
+    "name": "agent.request",
+    "span_id": "036a052458b74335",
+    "started_at": 1792271649.515607,
+    "ended_at": 1792271659.4437644,
+    "duration_ms": 9928.2,
+    "attributes": {
+      "session.id": "9056ffd114bc",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7150,
+      "gen_ai.usage.total_output_tokens": 620
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "4aecf7492e5b4150",
+        "started_at": 1792271649.5157561,
+        "ended_at": 1792271654.6362488,
+        "duration_ms": 5120.5,
+        "attributes": {
+          "summary.text": "**Conversation summary (support case, customer CUS-0004)**\n\n**Customer:** Danylo Kovalenko (CUS-0004), tier1\n**Account:** ACC-1005, EUR, balance 1,310.20 EUR\n\n**Disputed transaction:** TX-0401\n- Amount: 240.00 EUR (confirmed)\n- Merchant: TechMart Online\n- Date: 2026-07-20\n- Type: outgoing card payment, settled\n- Customer's complaint: goods never arrived\n\n**Dispute eligibility (checked, nothing filed):**\n- Reason code: `goods_not_received` (only applicable code, per the user's request)\n- Filing window: 90 days from transaction date\n- Deadline: 2026-10-18 (as of 2026-09-15)\n- Checks: reason code pass, transaction status pass, window pass, compliance hold pass\n- Knowledge base: review target is 10 business days for card reason codes. Complex cases with a foreign acquirer may take up to 45 calendar days, and the customer is notified if so.\n\n**Commitments made:**\n- No dispute has been created or submitted. The user explicitly asked for discussion only.\n- If the customer chooses to proceed, the agent offered to open the dispute for 240.00 EUR under `goods_not_received`. This requires the customer's explicit go-ahead.\n\n**Other account activity (not discussed, noted for context):**\n- TX-0402: 240.00 EUR, TechMart Online, 2026-07-14, settled. Same merchant and amount as TX-0401, about six days earlier. Not raised by the customer. It may be relevant if the customer also disputes it, but it is a separate transaction with its own window.\n- TX-0403: 35.50 EUR, CityParking, 2026-09-01, outgoing card payment, settled.\n\n**Open items:** Customer decision on whether to file the",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "db8f8142fec148ac",
+        "started_at": 1792271654.6363564,
+        "ended_at": 1792271656.177456,
+        "duration_ms": 1541.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3245,
+          "gen_ai.usage.output_tokens": 203
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "67721b6e70ac4dce",
+        "started_at": 1792271656.177589,
+        "ended_at": 1792271656.1792567,
+        "duration_ms": 1.7,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "goods_not_received dispute evidence required documentation"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "goods_not_received dispute evidence required documentation",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s5",
+                "doc": "disputes-process.md",
+                "score": 0.6489,
+                "text": "Dispute handling process\n## Evidence requirements\nThe customer may be asked for supporting evidence: an order confirmation, a\ndelivery record, correspondence with the merchant. Failure to supply requested\nevidence within 7 calendar days results in the case being declined."
+              },
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 0.5303,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              },
+              {
+                "id": "glossary.md#s7",
+                "doc": "glossary.md",
+                "score": 0.4714,
+                "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+              },
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 0.4523,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              }
+            ]
+          },
+          "retrieval.query": "goods_not_received dispute evidence required documentation",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s5",
+              "score": 0.6489,
+              "text": "Dispute handling process\n## Evidence requirements\nThe customer may be asked for supporting evidence: an order confirmation, a\ndelivery record, correspondence wi"
+            },
+            {
+              "id": "disputes-process.md#s6",
+              "score": 0.5303,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            },
+            {
+              "id": "glossary.md#s7",
+              "score": 0.4714,
+              "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+            },
+            {
+              "id": "disputes.md#s1",
+              "score": 0.4523,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window "
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "9d86aa9acab447c6",
+        "started_at": 1792271656.1794071,
+        "ended_at": 1792271659.4437122,
+        "duration_ms": 3264.3,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3905,
+          "gen_ai.usage.output_tokens": 417
+        },
+        "children": []
+      }
+    ]
+  }
+}

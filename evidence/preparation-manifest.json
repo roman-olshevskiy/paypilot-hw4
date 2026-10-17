@@ -1,0 +1,27 @@
+{
+  "recorded_on": "2026-10-17",
+  "repositories": {
+    "paypilot-stand-shared": {
+      "commit": "86a22ea645536003e356f3095f159ca2a13a57f3",
+      "status": ""
+    },
+    "paypilot-l05-eval": {
+      "commit": "d5e763d8613cc6e9e8bfe5d541ad0beb40cb4431",
+      "status": ""
+    },
+    "paypilot-hw2": {
+      "commit": "534ff5f502eae633db6cc54de008a5bd64882334",
+      "status": ""
+    },
+    "paypilot-hw3": {
+      "commit": "6e22fbcb1ee464024db4936f52e2e391690a5f8f",
+      "status": ""
+    }
+  },
+  "protected_datasets_sha256": {
+    "D:\\neoversity\\paypilot-hw2\\golden.jsonl": "76c936eba16dd02e0a79cba2345282bf32400e857b356483dd84940ca1c7959b",
+    "D:\\neoversity\\paypilot-hw3\\golden.jsonl": "97dc8e0936fae04e95e2b33829480e15e773d970bddc43109b457d73cee34963"
+  },
+  "stand_url": "http://localhost:8000",
+  "available_balance_usd": 17.57
+}

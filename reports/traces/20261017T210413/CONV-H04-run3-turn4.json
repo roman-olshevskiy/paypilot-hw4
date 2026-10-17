@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H04",
+  "run": 3,
+  "turn": 4,
+  "user": "What information about this same charge would be needed to review a dispute?",
+  "answer": "To review a dispute for TX-0401 (240.00 EUR, TechMart Online, 2026-07-20), the following information is needed:\n\n- **Transaction details:** the transaction ID (TX-0401), amount, date, and merchant, which you already have.\n- **Expected delivery date:** the date by which the goods should have arrived.\n- **Order confirmation:** from TechMart Online, showing what was ordered, the amount paid, and the order date.\n- **Delivery record:** any tracking information or shipping notice, or confirmation that none was issued.\n- **Merchant correspondence:** emails, chat logs, or support tickets about the order and its non-delivery.\n\nIf the review requests evidence, you must supply it within 7 calendar days, or the case will be declined. Nothing has been filed yet. The dispute window closes on 2026-10-18. Tell me when you want to proceed and I'll open the dispute.",
+  "trace": {
+    "request_id": "314106f4f53b406b",
+    "name": "agent.request",
+    "span_id": "fa3d4372ef6042c2",
+    "started_at": 1792271629.2670517,
+    "ended_at": 1792271632.3802843,
+    "duration_ms": 3113.2,
+    "attributes": {
+      "session.id": "765f4726189a",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4059,
+      "gen_ai.usage.total_output_tokens": 555
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "b0bd71744325434b",
+        "started_at": 1792271629.2672093,
+        "ended_at": 1792271632.3802404,
+        "duration_ms": 3113.0,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4059,
+          "gen_ai.usage.output_tokens": 555
+        },
+        "children": []
+      }
+    ]
+  }
+}

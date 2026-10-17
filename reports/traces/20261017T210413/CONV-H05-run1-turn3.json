@@ -1,0 +1,94 @@
+{
+  "case": "CONV-H05",
+  "run": 1,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily transfer limit on file for your tier (tier1) is **EUR 5,000.00**. As of 2026-09-15:\n\n- **Daily limit:** EUR 5,000.00\n- **Spent today:** EUR 0.00\n- **Remaining today:** EUR 5,000.00\n\nThe limit tool reports transfer limits, and it does not break out a separate card-only limit. If you need to confirm how card payments count against this limit, I can search the knowledge base for that.",
+  "trace": {
+    "request_id": "de8a753f1997404e",
+    "name": "agent.request",
+    "span_id": "e713cdfd9f424c91",
+    "started_at": 1792271721.4733336,
+    "ended_at": 1792271729.6560276,
+    "duration_ms": 8182.7,
+    "attributes": {
+      "session.id": "2b24b49fccbb",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6473,
+      "gen_ai.usage.total_output_tokens": 526
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "8ab8173cebe24cf4",
+        "started_at": 1792271721.4734964,
+        "ended_at": 1792271726.0083773,
+        "duration_ms": 4534.9,
+        "attributes": {
+          "summary.text": "**Case summary: TX-0401 (goods not received)**\n\n- **Customer:** Danylo Kovalenko, CUS-0004, tier1\n- **Account:** ACC-1005 (EUR, balance 1,310.20 EUR)\n- **Transaction:** TX-0401, 240.00 EUR, outgoing card payment, settled\n- **Merchant:** TechMart Online\n- **Transaction date:** 2026-07-20 (keep this date with the case)\n- **Customer complaint:** Goods never arrived.\n- **Applicable reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date (per disputes.md, reason-code table)\n- **Dispute deadline:** 2026-10-18, per the eligibility check (as_of 2026-09-15)\n- **Eligibility check result:** Eligible. Reason code, transaction status, window, and compliance hold all passed.\n- **Review timeline (per disputes-process.md):** 10 business days for card reason codes. Complex cases with a foreign acquirer may take up to 45 calendar days, and the customer is notified if so.\n- **Other observations:** TX-0402 is another 240.00 EUR charge to TechMart Online dated 2026-07-14 on the same account. It was not part of this request and has not been analyzed. TX-0403 (35.50 EUR, CityParking, 2026-09-01) is unrelated.\n- **Commitments and status:** No dispute has been created, submitted, or filed. The customer asked to discuss this charge only. The eligibility check was run at the customer's request, and the filing decision is still open.",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "d157f0d6a7184ed1",
+        "started_at": 1792271726.0084314,
+        "ended_at": 1792271727.6873713,
+        "duration_ms": 1678.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3149,
+          "gen_ai.usage.output_tokens": 238
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "7f35abe3615344a7",
+        "started_at": 1792271727.687414,
+        "ended_at": 1792271727.6882367,
+        "duration_ms": 0.8,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "cc77949a97844abf",
+        "started_at": 1792271727.6883056,
+        "ended_at": 1792271729.6560028,
+        "duration_ms": 1967.7,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3324,
+          "gen_ai.usage.output_tokens": 288
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "case": "CONV-H05",
+  "run": 2,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily transfer limit on the tier1 account is **EUR 5,000**. As of today (2026-09-15), you have spent EUR 0 of it, so **EUR 5,000 remains** available for today.\n\nFor reference, your monthly limit is EUR 50,000, with EUR 35.50 used so far this month and EUR 49,964.50 remaining.",
+  "trace": {
+    "request_id": "e0132794b3384ccf",
+    "name": "agent.request",
+    "span_id": "d2ae79be4626418e",
+    "started_at": 1792271760.1306944,
+    "ended_at": 1792271768.1666417,
+    "duration_ms": 8035.9,
+    "attributes": {
+      "session.id": "0e533488ffe4",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6177,
+      "gen_ai.usage.total_output_tokens": 404
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "2c9406fc19f84071",
+        "started_at": 1792271760.1309364,
+        "ended_at": 1792271764.8925724,
+        "duration_ms": 4761.6,
+        "attributes": {
+          "summary.text": "**Case summary: TX-0401 (goods not received)**\n\n**Customer:** CUS-0004, Danylo Kovalenko, tier1\n**Account:** ACC-1005, EUR, balance 1,310.20 EUR, tier1\n\n**Disputed transaction: TX-0401**\n- Amount and currency: 240.00 EUR\n- Transaction date: 2026-07-20 (keep with the case)\n- Merchant: TechMart Online\n- Direction and type: outgoing card payment, status settled\n- Customer's claim: goods never arrived\n\n**Reason code:** `goods_not_received`\n- Filing window: 90 days from the transaction date (per disputes.md, reason code table)\n- Eligibility check (as of 2026-09-15): eligible; deadline 2026-10-18\n- Checks passed: reason code, transaction status, window, compliance hold\n\n**Review timelines (disputes-process.md):** 10 business days for card reason codes. Complex cases with a foreign acquirer may take up to 45 calendar days, and the customer is notified if so.\n\n**Other transactions on ACC-1005 (not assessed, not part of this case):**\n- TX-0402: 240.",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "490c292197ca4309",
+        "started_at": 1792271764.89271,
+        "ended_at": 1792271766.8507607,
+        "duration_ms": 1958.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3001,
+          "gen_ai.usage.output_tokens": 285
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "63f29c51a53e47a8",
+        "started_at": 1792271766.8509305,
+        "ended_at": 1792271766.853627,
+        "duration_ms": 2.7,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "7a3f00f276a24aba",
+        "started_at": 1792271766.8537686,
+        "ended_at": 1792271768.1665518,
+        "duration_ms": 1312.8,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3176,
+          "gen_ai.usage.output_tokens": 119
+        },
+        "children": []
+      }
+    ]
+  }
+}

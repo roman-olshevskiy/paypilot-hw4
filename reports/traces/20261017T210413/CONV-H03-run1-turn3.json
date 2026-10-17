@@ -1,0 +1,94 @@
+{
+  "case": "CONV-H03",
+  "run": 1,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily transfer limit on file for your tier1 account is **EUR 5,000.00**. As of today (2026-09-15) you have used EUR 0.00, so the full EUR 5,000.00 remains available.\n\nYour monthly limit is EUR 50,000.00, with EUR 35.50 used so far this month and EUR 49,964.50 remaining.\n\nThe limit system reports one daily transfer limit and does not show a separate card-only figure, so I can't confirm whether card payments have their own cap. If you need that detail, I can search the knowledge base or escalate the question to a human agent.",
+  "trace": {
+    "request_id": "20a5f9d71ecd4a4b",
+    "name": "agent.request",
+    "span_id": "05fe050a774b443d",
+    "started_at": 1792271340.1131659,
+    "ended_at": 1792271348.7518022,
+    "duration_ms": 8638.6,
+    "attributes": {
+      "session.id": "27b7063b380a",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6699,
+      "gen_ai.usage.total_output_tokens": 452
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "180fd8fc3308410d",
+        "started_at": 1792271340.113524,
+        "ended_at": 1792271345.0211678,
+        "duration_ms": 4907.6,
+        "attributes": {
+          "summary.text": "**Conversation summary (CUS-0004, Danylo Kovalenko)**\n\n**Customer and account**\n- Customer ID: CUS-0004 (Danylo Kovalenko), tier1\n- Account: ACC-1005, EUR, balance 1310.20 EUR\n\n**Disputed transaction**\n- TX-0401: EUR 240.00, card, outbound, status settled\n- Merchant: TechMart Online\n- Transaction date: 2026-07-20\n- Customer reason: goods never arrived\n- Applicable reason code: `goods_not_received`\n\n**Dispute eligibility (checked, not filed)**\n- Reason code `goods_not_received`: filing window 90 days from transaction date\n- Deadline: 2026-10-18 (as of 2026-09-15, 33 days remaining)\n- Eligibility checks: reason_code pass, tx_status pass, window pass, compliance_hold pass\n- Knowledge base reference: disputes.md (window table) and disputes-process.md (card review target 10 business days; complex foreign-acquirer cases up to 45 calendar days, with customer notification)\n\n**Other transactions on ACC-1005 (for context only, not discussed as disputed)**\n- TX-0402: EUR 240.00, card, 2026-07-14, TechMart Online, settled\n- TX-0403: EUR 35.50, card, 2026-09-01, CityParking, settled\n\n**Commitments and instructions**\n- Customer instructed: discuss only this charge; do not create or submit a dispute; do not file anything.\n- Agent confirmed no dispute has been created or filed.\n- Agent offered to open a dispute for TX-0401 if the customer asks. No action has been taken.\n\n**Open items**\n- No dispute is filed. Next step depends on the customer's explicit instruction.\n- Customer has not yet been told about TX-0402, which has the same amount and merchant as TX-0401 and may be relevant to the goods-not-received claim.",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "b8031a2efffb4e11",
+        "started_at": 1792271345.0214071,
+        "ended_at": 1792271346.3552878,
+        "duration_ms": 1333.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3262,
+          "gen_ai.usage.output_tokens": 136
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "dfd93f440f7d44bf",
+        "started_at": 1792271346.3553588,
+        "ended_at": 1792271346.3569655,
+        "duration_ms": 1.6,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "e679b46a24af40ac",
+        "started_at": 1792271346.3571198,
+        "ended_at": 1792271348.751718,
+        "duration_ms": 2394.6,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3437,
+          "gen_ai.usage.output_tokens": 316
+        },
+        "children": []
+      }
+    ]
+  }
+}

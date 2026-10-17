@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H02",
+  "run": 2,
+  "turn": 5,
+  "user": "For that original charge, state its applicable filing window in days and the exact filing deadline. Do I still have time? Do not file anything.",
+  "answer": "The filing window for TX-0401 is **90 days** from the transaction date of 2026-07-20. The **filing deadline is 2026-10-18**.\n\nAs of 2026-09-15, the date of the eligibility check, **33 days remain**, so you still have time. I have not filed anything.",
+  "trace": {
+    "request_id": "c29837bda9a34d29",
+    "name": "agent.request",
+    "span_id": "dbf9de31ecfb4795",
+    "started_at": 1792271254.696512,
+    "ended_at": 1792271257.4410794,
+    "duration_ms": 2744.6,
+    "attributes": {
+      "session.id": "e34b2063e9e6",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5366,
+      "gen_ai.usage.total_output_tokens": 443
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "91bab2e9f43e409c",
+        "started_at": 1792271254.6967165,
+        "ended_at": 1792271257.4410553,
+        "duration_ms": 2744.3,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5366,
+          "gen_ai.usage.output_tokens": 443
+        },
+        "children": []
+      }
+    ]
+  }
+}

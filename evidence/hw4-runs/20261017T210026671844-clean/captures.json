@@ -1,0 +1,950 @@
+[
+  {
+    "case": "CONV-H01",
+    "run": 1,
+    "turn": 1,
+    "question": "Transaction TX-0401, 240.00 EUR: the goods never arrived. Confirm its amount and currency and name the single applicable reason code. We are only discussing this charge; do not create or submit a dispute.",
+    "response": {
+      "session_id": "9dc8497e5664",
+      "request_id": "1df44264cafb46d9",
+      "answer": "Transaction **TX-0401** is confirmed as **EUR 240.00**, a card payment to TechMart Online on 2026-07-20, status settled.\n\nThe applicable reason code is **`goods_not_received`**.\n\nI have not created or submitted a dispute, as you asked. If you want to proceed, I can run the eligibility check for this transaction first.",
+      "step_number": 1,
+      "prompt_version": "base.v1",
+      "elapsed_ms": 5734.2,
+      "usage": {
+        "input_tokens": 8645,
+        "output_tokens": 718,
+        "model": "claude-haiku-5-5",
+        "cost_usd": 0.001224
+      }
+    },
+    "trace": {
+      "request_id": "1df44264cafb46d9",
+      "name": "agent.request",
+      "span_id": "f9893c0c3c83467a",
+      "started_at": 1792270826.8291118,
+      "ended_at": 1792270832.5633082,
+      "duration_ms": 5734.2,
+      "attributes": {
+        "session.id": "9dc8497e5664",
+        "dialog.step_number": 1,
+        "run.profile": "clean",
+        "run.active_defects": [],
+        "prompt.version": "base.v1",
+        "reply.language_detected": "",
+        "llm.provider": "anthropic",
+        "session.customer_id": "CUS-0004",
+        "context.replay_active": false,
+        "gen_ai.usage.total_input_tokens": 8645,
+        "gen_ai.usage.total_output_tokens": 718
+      },
+      "children": [
+        {
+          "name": "llm.call",
+          "span_id": "b052721261854102",
+          "started_at": 1792270826.83186,
+          "ended_at": 1792270828.7687461,
+          "duration_ms": 1936.9,
+          "attributes": {
+            "agent.loop_step": 0,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 2658,
+            "gen_ai.usage.output_tokens": 214
+          },
+          "children": []
+        },
+        {
+          "name": "tool.get_account",
+          "span_id": "8ae905c6037e49fe",
+          "started_at": 1792270828.7689095,
+          "ended_at": 1792270828.7696085,
+          "duration_ms": 0.7,
+          "attributes": {
+            "tool.name": "get_account",
+            "tool.arguments": {},
+            "tool.result": {
+              "customer": {
+                "id": "CUS-0004",
+                "name": "Danylo Kovalenko",
+                "tier": "tier1"
+              },
+              "accounts": [
+                {
+                  "id": "ACC-1005",
+                  "customer_id": "CUS-0004",
+                  "currency": "EUR",
+                  "balance": 1310.2,
+                  "tier": "tier1",
+                  "holder": "Danylo Kovalenko"
+                }
+              ]
+            }
+          },
+          "children": []
+        },
+        {
+          "name": "llm.call",
+          "span_id": "9500d2a7064c4acf",
+          "started_at": 1792270828.769701,
+          "ended_at": 1792270830.5254993,
+          "duration_ms": 1755.8,
+          "attributes": {
+            "agent.loop_step": 1,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 2811,
+            "gen_ai.usage.output_tokens": 249
+          },
+          "children": []
+        },
+        {
+          "name": "tool.get_transactions",
+          "span_id": "26b8999f22a04521",
+          "started_at": 1792270830.5257828,
+          "ended_at": 1792270830.530452,
+          "duration_ms": 4.7,
+          "attributes": {
+            "tool.name": "get_transactions",
+            "tool.arguments": {
+              "account_id": "ACC-1005",
+              "limit": 50
+            },
+            "tool.result": {
+              "transactions": [
+                {
+                  "id": "TX-0403",
+                  "account_id": "ACC-1005",
+                  "date": "2026-09-01",
+                  "amount": 35.5,
+                  "currency": "EUR",
+                  "merchant": "CityParking",
+                  "direction": "out",
+                  "transfer_type": "card",
+                  "status": "settled"
+                },
+                {
+                  "id": "TX-0401",
+                  "account_id": "ACC-1005",
+                  "date": "2026-07-20",
+                  "amount": 240.0,
+                  "currency": "EUR",
+                  "merchant": "TechMart Online",
+                  "direction": "out",
+                  "transfer_type": "card",
+                  "status": "settled"
+                },
+                {
+                  "id": "TX-0402",
+                  "account_id": "ACC-1005",
+                  "date": "2026-07-14",
+                  "amount": 240.0,
+                  "currency": "EUR",
+                  "merchant": "TechMart Online",
+                  "direction": "out",
+                  "transfer_type": "card",
+                  "status": "settled"
+                }
+              ]
+            }
+          },
+          "children": []
+        },
+        {
+          "name": "llm.call",
+          "span_id": "b384d3b58c23460b",
+          "started_at": 1792270830.5309756,
+          "ended_at": 1792270832.562815,
+          "duration_ms": 2031.8,
+          "attributes": {
+            "agent.loop_step": 2,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 3176,
+            "gen_ai.usage.output_tokens": 255
+          },
+          "children": []
+        }
+      ]
+    }
+  },
+  {
+    "case": "CONV-H01",
+    "run": 1,
+    "turn": 2,
+    "question": "Can I dispute that charge? State the applicable reason code and filing window in days; do not file anything.",
+    "response": {
+      "session_id": "9dc8497e5664",
+      "request_id": "68f69d9694f34b0b",
+      "answer": "Yes, TX-0401 (EUR 240.00, TechMart Online, 2026-07-20) can be disputed.\n\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date, per the dispute rules and the eligibility check.\n- **Deadline:** 2026-10-18. As of today (2026-09-15) the eligibility check passed on all criteria: reason code, transaction status, window, and compliance hold.\n\nNo dispute has been filed. If you want to proceed, tell me and I will open it.",
+      "step_number": 2,
+      "prompt_version": "base.v1",
+      "elapsed_ms": 2802.9,
+      "usage": {
+        "input_tokens": 7557,
+        "output_tokens": 385,
+        "model": "claude-haiku-5-5",
+        "cost_usd": 0.000948
+      }
+    },
+    "trace": {
+      "request_id": "68f69d9694f34b0b",
+      "name": "agent.request",
+      "span_id": "37096b2ca7494d33",
+      "started_at": 1792270832.6033595,
+      "ended_at": 1792270835.4062648,
+      "duration_ms": 2802.9,
+      "attributes": {
+        "session.id": "9dc8497e5664",
+        "dialog.step_number": 2,
+        "run.profile": "clean",
+        "run.active_defects": [],
+        "prompt.version": "base.v1",
+        "reply.language_detected": "",
+        "llm.provider": "anthropic",
+        "session.customer_id": "CUS-0004",
+        "context.replay_active": false,
+        "gen_ai.usage.total_input_tokens": 7557,
+        "gen_ai.usage.total_output_tokens": 385
+      },
+      "children": [
+        {
+          "name": "llm.call",
+          "span_id": "6c54e5e80cc34fcd",
+          "started_at": 1792270832.6036754,
+          "ended_at": 1792270833.9350958,
+          "duration_ms": 1331.4,
+          "attributes": {
+            "agent.loop_step": 0,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 3327,
+            "gen_ai.usage.output_tokens": 204
+          },
+          "children": []
+        },
+        {
+          "name": "tool.check_dispute_eligibility",
+          "span_id": "aa90f0348e62423c",
+          "started_at": 1792270833.9352272,
+          "ended_at": 1792270833.9377978,
+          "duration_ms": 2.6,
+          "attributes": {
+            "tool.name": "check_dispute_eligibility",
+            "tool.arguments": {
+              "transaction_id": "TX-0401",
+              "reason_code": "goods_not_received"
+            },
+            "tool.result": {
+              "eligible": true,
+              "reason_code": "goods_not_received",
+              "window_days": 90,
+              "tx_date": "2026-07-20",
+              "as_of": "2026-09-15",
+              "deadline": "2026-10-18",
+              "checks": {
+                "reason_code": "pass",
+                "tx_status": "pass",
+                "window": "pass",
+                "compliance_hold": "pass"
+              }
+            }
+          },
+          "children": []
+        },
+        {
+          "name": "tool.search_knowledge_base",
+          "span_id": "54543177ef794343",
+          "started_at": 1792270833.937891,
+          "ended_at": 1792270833.9529564,
+          "duration_ms": 15.1,
+          "attributes": {
+            "tool.name": "search_knowledge_base",
+            "tool.arguments": {
+              "query": "dispute filing window days goods_not_received"
+            },
+            "tool.result": {
+              "index": "kb_clean",
+              "top_k": 4,
+              "query": "dispute filing window days goods_not_received",
+              "fragments": [
+                {
+                  "id": "disputes.md#s1",
+                  "doc": "disputes.md",
+                  "score": 1.206,
+                  "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+                },
+                {
+                  "id": "limits-operations.md#s5",
+                  "doc": "limits-operations.md",
+                  "score": 0.8165,
+                  "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+                },
+                {
+                  "id": "glossary.md#s3",
+                  "doc": "glossary.md",
+                  "score": 0.6124,
+                  "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+                },
+                {
+                  "id": "disputes-process.md#s4",
+                  "doc": "disputes-process.md",
+                  "score": 0.61,
+                  "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+                }
+              ]
+            },
+            "retrieval.query": "dispute filing window days goods_not_received",
+            "retrieval.index": "kb_clean",
+            "retrieval.top_k": 4,
+            "retrieval.fragments": [
+              {
+                "id": "disputes.md#s1",
+                "score": 1.206,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window "
+              },
+              {
+                "id": "limits-operations.md#s5",
+                "score": 0.8165,
+                "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+              },
+              {
+                "id": "glossary.md#s3",
+                "score": 0.6124,
+                "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+              },
+              {
+                "id": "disputes-process.md#s4",
+                "score": 0.61,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex"
+              }
+            ]
+          },
+          "children": []
+        },
+        {
+          "name": "llm.call",
+          "span_id": "cfb2621cc6c04cf6",
+          "started_at": 1792270833.9530272,
+          "ended_at": 1792270835.4062202,
+          "duration_ms": 1453.2,
+          "attributes": {
+            "agent.loop_step": 1,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 4230,
+            "gen_ai.usage.output_tokens": 181
+          },
+          "children": []
+        }
+      ]
+    }
+  },
+  {
+    "case": "CONV-H01",
+    "run": 1,
+    "turn": 3,
+    "question": "What is my daily card limit?",
+    "response": {
+      "session_id": "9dc8497e5664",
+      "request_id": "bf6a2f3f7d1e45d7",
+      "answer": "Your daily transfer limit on the Tier 1 account (ACC-1005) is EUR 5,000.00. As of today (2026-09-15) you have spent EUR 0.00 of it, so EUR 5,000.00 remains.\n\nFor reference, your monthly limit is EUR 50,000.00, with EUR 35.50 used so far and EUR 49,964.50 remaining.",
+      "step_number": 3,
+      "prompt_version": "base.v1",
+      "elapsed_ms": 8392.9,
+      "usage": {
+        "input_tokens": 9697,
+        "output_tokens": 399,
+        "model": "claude-haiku-5-5",
+        "cost_usd": 0.00117
+      }
+    },
+    "trace": {
+      "request_id": "bf6a2f3f7d1e45d7",
+      "name": "agent.request",
+      "span_id": "580bc4aa026447ec",
+      "started_at": 1792270835.440135,
+      "ended_at": 1792270843.833013,
+      "duration_ms": 8392.9,
+      "attributes": {
+        "session.id": "9dc8497e5664",
+        "dialog.step_number": 3,
+        "run.profile": "clean",
+        "run.active_defects": [],
+        "prompt.version": "base.v1",
+        "reply.language_detected": "",
+        "llm.provider": "anthropic",
+        "session.customer_id": "CUS-0004",
+        "context.replay_active": false,
+        "gen_ai.usage.total_input_tokens": 9697,
+        "gen_ai.usage.total_output_tokens": 399
+      },
+      "children": [
+        {
+          "name": "agent.summarize",
+          "span_id": "d22d5c67a99e4e0b",
+          "started_at": 1792270835.440304,
+          "ended_at": 1792270839.6601276,
+          "duration_ms": 4219.8,
+          "attributes": {
+            "summary.text": "**Case summary: TX-0401 (goods not received)**\n\n- **Customer:** CUS-0004, Danylo Kovalenko, tier1\n- **Account:** ACC-1005, EUR, balance 1,310.20 EUR\n- **Transaction:** TX-0401, **EUR 240.00** outbound card payment to TechMart Online on 2026-07-20, status settled\n- **Customer's complaint:** goods were never received\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from transaction date (per disputes.md reason-code table)\n- **Deadline:** 2026-10-18\n- **Eligibility check (as of 2026-09-15):** eligible. Reason code, transaction status, window, and compliance hold all passed.\n- **Review target:** 10 business days for card reason codes, per disputes-process.md. Foreign-acquirer cases can run to 45 calendar days, and the customer is notified if so.\n- **Status:** No dispute has been created or filed. The agent has committed only to opening one if the customer asks.\n\n**Related transactions on ACC-1005 (not in scope, noted for reference):**\n- TX-0402: EUR 240.00, TechMart Online, 2026-07-14, settled. Same merchant and amount as TX-0401.\n- TX-0403: EUR 35.50, CityParking, 2026-09-01, settled.",
+            "summary.replaced_messages": 11
+          },
+          "children": []
+        },
+        {
+          "name": "llm.call",
+          "span_id": "6245f5c2f1574866",
+          "started_at": 1792270839.6602602,
+          "ended_at": 1792270841.3295116,
+          "duration_ms": 1669.3,
+          "attributes": {
+            "agent.loop_step": 0,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 3072,
+            "gen_ai.usage.output_tokens": 215
+          },
+          "children": []
+        },
+        {
+          "name": "tool.get_account",
+          "span_id": "f4ce6c1ad6a54b25",
+          "started_at": 1792270841.3296432,
+          "ended_at": 1792270841.3317747,
+          "duration_ms": 2.1,
+          "attributes": {
+            "tool.name": "get_account",
+            "tool.arguments": {},
+            "tool.result": {
+              "customer": {
+                "id": "CUS-0004",
+                "name": "Danylo Kovalenko",
+                "tier": "tier1"
+              },
+              "accounts": [
+                {
+                  "id": "ACC-1005",
+                  "customer_id": "CUS-0004",
+                  "currency": "EUR",
+                  "balance": 1310.2,
+                  "tier": "tier1",
+                  "holder": "Danylo Kovalenko"
+                }
+              ]
+            }
+          },
+          "children": []
+        },
+        {
+          "name": "llm.call",
+          "span_id": "1fe0553382184514",
+          "started_at": 1792270841.3319607,
+          "ended_at": 1792270842.2278907,
+          "duration_ms": 895.9,
+          "attributes": {
+            "agent.loop_step": 1,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 3225,
+            "gen_ai.usage.output_tokens": 56
+          },
+          "children": []
+        },
+        {
+          "name": "tool.check_limits",
+          "span_id": "1fec88c80cc7480f",
+          "started_at": 1792270842.228097,
+          "ended_at": 1792270842.2316864,
+          "duration_ms": 3.6,
+          "attributes": {
+            "tool.name": "check_limits",
+            "tool.arguments": {
+              "customer_id": "CUS-0004"
+            },
+            "tool.result": {
+              "tier": "tier1",
+              "as_of": "2026-09-15",
+              "daily_limit_eur": 5000,
+              "daily_spent_eur": 0,
+              "daily_remaining_eur": 5000,
+              "monthly_limit_eur": 50000,
+              "monthly_spent_eur": 35.5,
+              "monthly_remaining_eur": 49964.5
+            }
+          },
+          "children": []
+        },
+        {
+          "name": "llm.call",
+          "span_id": "06bbb76a629d41ce",
+          "started_at": 1792270842.2318234,
+          "ended_at": 1792270843.8329625,
+          "duration_ms": 1601.1,
+          "attributes": {
+            "agent.loop_step": 2,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 3400,
+            "gen_ai.usage.output_tokens": 128
+          },
+          "children": []
+        }
+      ]
+    }
+  },
+  {
+    "case": "CONV-H01",
+    "run": 1,
+    "turn": 4,
+    "question": "And the FX spread if I pay in USD?",
+    "response": {
+      "session_id": "9dc8497e5664",
+      "request_id": "f81a283ee2ab4670",
+      "answer": "Paying in USD would be a currency conversion from your EUR balance. For a Tier 1 account:\n\n- **FX spread:** 1.5% of the gross converted amount.\n- **Free monthly conversion allowance:** EUR 500.\n- **How it applies:** If the whole conversion fits within your remaining monthly allowance, no spread is charged. Once the allowance is used up, the full 1.5% applies to the conversion.\n\nI can't see how much of this month's EUR 500 allowance you have already used for conversions, so I can't tell whether a conversion would be free. If you tell me the amount you want to convert, I can run a full quote showing the mid-market rate, the spread, the remaining allowance, and the final USD amount.",
+      "step_number": 4,
+      "prompt_version": "base.v1",
+      "elapsed_ms": 5689.2,
+      "usage": {
+        "input_tokens": 7921,
+        "output_tokens": 770,
+        "model": "claude-haiku-5-5",
+        "cost_usd": 0.001177
+      }
+    },
+    "trace": {
+      "request_id": "f81a283ee2ab4670",
+      "name": "agent.request",
+      "span_id": "c3536580dc3b46d4",
+      "started_at": 1792270843.8668818,
+      "ended_at": 1792270849.5561101,
+      "duration_ms": 5689.2,
+      "attributes": {
+        "session.id": "9dc8497e5664",
+        "dialog.step_number": 4,
+        "run.profile": "clean",
+        "run.active_defects": [],
+        "prompt.version": "base.v1",
+        "reply.language_detected": "",
+        "llm.provider": "anthropic",
+        "session.customer_id": "CUS-0004",
+        "context.replay_active": false,
+        "gen_ai.usage.total_input_tokens": 7921,
+        "gen_ai.usage.total_output_tokens": 770
+      },
+      "children": [
+        {
+          "name": "llm.call",
+          "span_id": "8c217ebef47f4948",
+          "started_at": 1792270843.8670843,
+          "ended_at": 1792270845.682491,
+          "duration_ms": 1815.4,
+          "attributes": {
+            "agent.loop_step": 0,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 3546,
+            "gen_ai.usage.output_tokens": 267
+          },
+          "children": []
+        },
+        {
+          "name": "tool.search_knowledge_base",
+          "span_id": "c6c65d1fac444f1c",
+          "started_at": 1792270845.682871,
+          "ended_at": 1792270845.6852522,
+          "duration_ms": 2.4,
+          "attributes": {
+            "tool.name": "search_knowledge_base",
+            "tool.arguments": {
+              "query": "FX spread tier1 EUR USD conversion fee"
+            },
+            "tool.result": {
+              "index": "kb_clean",
+              "top_k": 4,
+              "query": "FX spread tier1 EUR USD conversion fee",
+              "fragments": [
+                {
+                  "id": "tariffs.md#s2",
+                  "doc": "tariffs.md",
+                  "score": 1.2481,
+                  "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tier | FX spread | Free monthly conversion allowance |\n|---|---|---|\n| Tier 1 | 1.5% | EUR 500 |\n| Tier 2 | 0.9% | EUR 1,000 |\n| Tier 3 | 0.5% | EUR 5,000 |"
+                },
+                {
+                  "id": "fees-detail.md#s2",
+                  "doc": "fees-detail.md",
+                  "score": 1.1471,
+                  "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+                },
+                {
+                  "id": "tariffs.md#s3",
+                  "doc": "tariffs.md",
+                  "score": 1.1429,
+                  "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |\n| SWIFT | EUR 15.00 | 0.3% |\n| Card payment | EUR 0.00 | 1.2% |\n\nThe percentage fee is calculated on the EUR equivalent of the transfer amount."
+                },
+                {
+                  "id": "fx-guide.md#s1",
+                  "doc": "fx-guide.md",
+                  "score": 1.0914,
+                  "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier spread (a percentage of the gross converted amount);\nthe free monthly conversion allowance. If the whole conversion fits within the\ncustomer's remaining monthly allowance, no spread is charged. Once the\nallowance is exhausted, the full tier spread applies to the conversion."
+                }
+              ]
+            },
+            "retrieval.query": "FX spread tier1 EUR USD conversion fee",
+            "retrieval.index": "kb_clean",
+            "retrieval.top_k": 4,
+            "retrieval.fragments": [
+              {
+                "id": "tariffs.md#s2",
+                "score": 1.2481,
+                "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tie"
+              },
+              {
+                "id": "fees-detail.md#s2",
+                "score": 1.1471,
+                "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+              },
+              {
+                "id": "tariffs.md#s3",
+                "score": 1.1429,
+                "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |"
+              },
+              {
+                "id": "fx-guide.md#s1",
+                "score": 1.0914,
+                "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier s"
+              }
+            ]
+          },
+          "children": []
+        },
+        {
+          "name": "llm.call",
+          "span_id": "c3fb12409b324a5d",
+          "started_at": 1792270845.685466,
+          "ended_at": 1792270849.5560658,
+          "duration_ms": 3870.6,
+          "attributes": {
+            "agent.loop_step": 1,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 4375,
+            "gen_ai.usage.output_tokens": 503
+          },
+          "children": []
+        }
+      ]
+    }
+  },
+  {
+    "case": "CONV-H01",
+    "run": 1,
+    "turn": 5,
+    "question": "Back to the original charge: repeat its exact amount, currency and reason code, then explain the next step. Do not file anything.",
+    "response": {
+      "session_id": "9dc8497e5664",
+      "request_id": "6a6d60ef91c64bf0",
+      "answer": "Here are the details for TX-0401 from the case record:\n\n- **Amount:** EUR 240.00\n- **Currency:** EUR\n- **Reason code:** `goods_not_received`\n\n**Next step:** No dispute has been filed. If you want to proceed, confirm and I will open it under this reason code. The filing deadline is 2026-10-18. The dispute review normally takes 10 business days. If the merchant's bank is outside the EU, the review can take up to 45 calendar days, and you would be notified if that applies.",
+      "step_number": 5,
+      "prompt_version": "base.v1",
+      "elapsed_ms": 3090.0,
+      "usage": {
+        "input_tokens": 4654,
+        "output_tokens": 491,
+        "model": "claude-haiku-5-5",
+        "cost_usd": 0.000711
+      }
+    },
+    "trace": {
+      "request_id": "6a6d60ef91c64bf0",
+      "name": "agent.request",
+      "span_id": "78b5a6ccf7814b35",
+      "started_at": 1792270849.5843546,
+      "ended_at": 1792270852.674327,
+      "duration_ms": 3090.0,
+      "attributes": {
+        "session.id": "9dc8497e5664",
+        "dialog.step_number": 5,
+        "run.profile": "clean",
+        "run.active_defects": [],
+        "prompt.version": "base.v1",
+        "reply.language_detected": "",
+        "llm.provider": "anthropic",
+        "session.customer_id": "CUS-0004",
+        "context.replay_active": false,
+        "gen_ai.usage.total_input_tokens": 4654,
+        "gen_ai.usage.total_output_tokens": 491
+      },
+      "children": [
+        {
+          "name": "llm.call",
+          "span_id": "69a6578e09d04e5a",
+          "started_at": 1792270849.5845675,
+          "ended_at": 1792270852.6742742,
+          "duration_ms": 3089.7,
+          "attributes": {
+            "agent.loop_step": 0,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 4654,
+            "gen_ai.usage.output_tokens": 491
+          },
+          "children": []
+        }
+      ]
+    }
+  },
+  {
+    "case": "CONV-H01",
+    "run": 1,
+    "turn": 6,
+    "question": "The amount is 240 euro, as I said at the start.",
+    "response": {
+      "session_id": "9dc8497e5664",
+      "request_id": "4dc92f94c79f4391",
+      "answer": "You're right, the amount is EUR 240.00. The transaction list confirms it: TX-0401, EUR 240.00 card payment to TechMart Online on 2026-07-20, status settled.\n\nNothing has been filed. Before any dispute is opened, I'll run the eligibility check for `goods_not_received`. If you want to proceed, confirm and I'll do that.\n\nYour account also shows TX-0402: EUR 240.00 to TechMart Online on 2026-07-14, also settled. If you were charged twice for the same order, that transaction may fit a `duplicate_charge` dispute instead. I can check its eligibility too if you tell me which applies.",
+      "step_number": 6,
+      "prompt_version": "base.v1",
+      "elapsed_ms": 5986.9,
+      "usage": {
+        "input_tokens": 10051,
+        "output_tokens": 931,
+        "model": "claude-haiku-5-5",
+        "cost_usd": 0.00147
+      }
+    },
+    "trace": {
+      "request_id": "4dc92f94c79f4391",
+      "name": "agent.request",
+      "span_id": "db2138594791489f",
+      "started_at": 1792270852.7089372,
+      "ended_at": 1792270858.6958246,
+      "duration_ms": 5986.9,
+      "attributes": {
+        "session.id": "9dc8497e5664",
+        "dialog.step_number": 6,
+        "run.profile": "clean",
+        "run.active_defects": [],
+        "prompt.version": "base.v1",
+        "reply.language_detected": "",
+        "llm.provider": "anthropic",
+        "session.customer_id": "CUS-0004",
+        "context.replay_active": false,
+        "gen_ai.usage.total_input_tokens": 10051,
+        "gen_ai.usage.total_output_tokens": 931
+      },
+      "children": [
+        {
+          "name": "llm.call",
+          "span_id": "38ed223bbeae4611",
+          "started_at": 1792270852.7090678,
+          "ended_at": 1792270855.0766768,
+          "duration_ms": 2367.6,
+          "attributes": {
+            "agent.loop_step": 0,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 4843,
+            "gen_ai.usage.output_tokens": 338
+          },
+          "children": []
+        },
+        {
+          "name": "tool.get_transactions",
+          "span_id": "e8344a4d72f24234",
+          "started_at": 1792270855.076767,
+          "ended_at": 1792270855.0780656,
+          "duration_ms": 1.3,
+          "attributes": {
+            "tool.name": "get_transactions",
+            "tool.arguments": {
+              "account_id": "ACC-1005",
+              "limit": 20
+            },
+            "tool.result": {
+              "transactions": [
+                {
+                  "id": "TX-0403",
+                  "account_id": "ACC-1005",
+                  "date": "2026-09-01",
+                  "amount": 35.5,
+                  "currency": "EUR",
+                  "merchant": "CityParking",
+                  "direction": "out",
+                  "transfer_type": "card",
+                  "status": "settled"
+                },
+                {
+                  "id": "TX-0401",
+                  "account_id": "ACC-1005",
+                  "date": "2026-07-20",
+                  "amount": 240.0,
+                  "currency": "EUR",
+                  "merchant": "TechMart Online",
+                  "direction": "out",
+                  "transfer_type": "card",
+                  "status": "settled"
+                },
+                {
+                  "id": "TX-0402",
+                  "account_id": "ACC-1005",
+                  "date": "2026-07-14",
+                  "amount": 240.0,
+                  "currency": "EUR",
+                  "merchant": "TechMart Online",
+                  "direction": "out",
+                  "transfer_type": "card",
+                  "status": "settled"
+                }
+              ]
+            }
+          },
+          "children": []
+        },
+        {
+          "name": "llm.call",
+          "span_id": "6a50ebad177442f6",
+          "started_at": 1792270855.0781937,
+          "ended_at": 1792270858.695737,
+          "duration_ms": 3617.5,
+          "attributes": {
+            "agent.loop_step": 1,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 5208,
+            "gen_ai.usage.output_tokens": 593
+          },
+          "children": []
+        }
+      ]
+    }
+  },
+  {
+    "case": "CONV-H01",
+    "run": 1,
+    "turn": 7,
+    "question": "For that original charge, state its applicable filing window in days and the exact filing deadline. Do I still have time? Do not file anything.",
+    "response": {
+      "session_id": "9dc8497e5664",
+      "request_id": "8f429e1a4eb34007",
+      "answer": "The applicable filing window for `goods_not_received` is **90 days** from the transaction date (disputes.md, reason-code table).\n\nFor TX-0401 (EUR 240.00, dated 2026-07-20), the **filing deadline is 2026-10-18**. Today is 2026-09-15, so you have **33 days** left.\n\nNothing has been filed. If you want to open the dispute, confirm and I'll run the eligibility check first. I'll only file if that check passes.",
+      "step_number": 7,
+      "prompt_version": "base.v1",
+      "elapsed_ms": 6192.7,
+      "usage": {
+        "input_tokens": 11614,
+        "output_tokens": 901,
+        "model": "claude-haiku-5-5",
+        "cost_usd": 0.001612
+      }
+    },
+    "trace": {
+      "request_id": "8f429e1a4eb34007",
+      "name": "agent.request",
+      "span_id": "d1cdab0ba63e4e9d",
+      "started_at": 1792270858.7278557,
+      "ended_at": 1792270864.9205787,
+      "duration_ms": 6192.7,
+      "attributes": {
+        "session.id": "9dc8497e5664",
+        "dialog.step_number": 7,
+        "run.profile": "clean",
+        "run.active_defects": [],
+        "prompt.version": "base.v1",
+        "reply.language_detected": "",
+        "llm.provider": "anthropic",
+        "session.customer_id": "CUS-0004",
+        "context.replay_active": false,
+        "gen_ai.usage.total_input_tokens": 11614,
+        "gen_ai.usage.total_output_tokens": 901
+      },
+      "children": [
+        {
+          "name": "llm.call",
+          "span_id": "01af41953ee849d4",
+          "started_at": 1792270858.7280593,
+          "ended_at": 1792270861.9439962,
+          "duration_ms": 3215.9,
+          "attributes": {
+            "agent.loop_step": 0,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 5469,
+            "gen_ai.usage.output_tokens": 392
+          },
+          "children": []
+        },
+        {
+          "name": "tool.search_knowledge_base",
+          "span_id": "f66a34049e7b46da",
+          "started_at": 1792270861.944043,
+          "ended_at": 1792270861.9448671,
+          "duration_ms": 0.8,
+          "attributes": {
+            "tool.name": "search_knowledge_base",
+            "tool.arguments": {
+              "query": "dispute filing window goods_not_received days from transaction date"
+            },
+            "tool.result": {
+              "index": "kb_clean",
+              "top_k": 4,
+              "query": "dispute filing window goods_not_received days from transaction date",
+              "fragments": [
+                {
+                  "id": "disputes.md#s1",
+                  "doc": "disputes.md",
+                  "score": 1.6583,
+                  "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+                },
+                {
+                  "id": "glossary.md#s3",
+                  "doc": "glossary.md",
+                  "score": 1.2247,
+                  "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+                },
+                {
+                  "id": "limits-operations.md#s5",
+                  "doc": "limits-operations.md",
+                  "score": 1.0206,
+                  "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+                },
+                {
+                  "id": "disputes.md#s2",
+                  "doc": "disputes.md",
+                  "score": 0.889,
+                  "text": "Payment dispute rules\n## Eligibility conditions\nA dispute is eligible only if all of the following hold: the reason code is\nvalid; the transaction status is settled; the transaction date is within the\nreason code's window relative to the current date; and no customer-level\nrestriction applies (for example, an account under compliance review cannot\nopen new disputes until the review concludes)."
+                }
+              ]
+            },
+            "retrieval.query": "dispute filing window goods_not_received days from transaction date",
+            "retrieval.index": "kb_clean",
+            "retrieval.top_k": 4,
+            "retrieval.fragments": [
+              {
+                "id": "disputes.md#s1",
+                "score": 1.6583,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window "
+              },
+              {
+                "id": "glossary.md#s3",
+                "score": 1.2247,
+                "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+              },
+              {
+                "id": "limits-operations.md#s5",
+                "score": 1.0206,
+                "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+              },
+              {
+                "id": "disputes.md#s2",
+                "score": 0.889,
+                "text": "Payment dispute rules\n## Eligibility conditions\nA dispute is eligible only if all of the following hold: the reason code is\nvalid; the transaction status is set"
+              }
+            ]
+          },
+          "children": []
+        },
+        {
+          "name": "llm.call",
+          "span_id": "864ae2f5fa784a41",
+          "started_at": 1792270861.9449341,
+          "ended_at": 1792270864.9205546,
+          "duration_ms": 2975.6,
+          "attributes": {
+            "agent.loop_step": 1,
+            "gen_ai.request.model": "claude-haiku-5-5",
+            "gen_ai.usage.input_tokens": 6145,
+            "gen_ai.usage.output_tokens": 509
+          },
+          "children": []
+        }
+      ]
+    }
+  }
+]

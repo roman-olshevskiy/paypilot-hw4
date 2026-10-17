@@ -1,0 +1,28 @@
+set l05_dialogs.jsonl set_hash d7ea1a1c292f
+{
+  "cases": 5,
+  "multi_turn": 5,
+  "layers": {
+    "memory": 5
+  },
+  "oracles": {
+    "engine": 5
+  },
+  "sources": {
+    "complaint": 1,
+    "plan": 4
+  },
+  "severities": {
+    "critical": 5
+  },
+  "ladder_levels": [
+    2,
+    3,
+    4
+  ],
+  "gates": {
+    "release": 5
+  },
+  "human_oracle_pct": 0.0,
+  "severity_filled_pct": 100.0
+}
