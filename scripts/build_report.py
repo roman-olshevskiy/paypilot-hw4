@@ -133,7 +133,7 @@ def main():
             for turn in failedturns:
                 row=next(x for x in part if x["turn"]==turn)
                 appendix+=["",f"Хід {turn}; request_id {row['response']['request_id']}",
-                           "Перевірки: "+ "; ".join(c["label"]+": "+c["detail"] for c in rep["checks"] if not c["passed"] and c["turn"]==turn),
+                           "Перевірки: "+ ("; ".join(c["label"]+": "+c["detail"] for c in rep["checks"] if not c["passed"] and c["turn"]==turn) or "native PASS; binding потребує окремої перевірки"),
                            "~~~text", row["question"],"","ANSWER:",row["response"]["answer"],"~~~"]
                 tooldata=[]
                 def collect(node):

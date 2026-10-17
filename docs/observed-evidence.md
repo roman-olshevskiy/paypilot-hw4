@@ -1083,7 +1083,7 @@ Summary, хід 3; request_id 4d54c53f345e4df3
 Нативний PASS: перевірити binding за фактичним текстом; не прирівнювати його до збереженої пам’яті.
 
 Хід 3; request_id 4d54c53f345e4df3
-Перевірки: 
+Перевірки: native PASS; binding потребує окремої перевірки
 ~~~text
 What is my daily card limit?
 
@@ -1137,7 +1137,7 @@ Tool/retrieval spans цього ходу (дослівні JSON-поля):
 ~~~
 
 Хід 8; request_id 9fc9a1eb55d0457b
-Перевірки: 
+Перевірки: native PASS; binding потребує окремої перевірки
 ~~~text
 Back to the original charge: repeat its exact amount, currency and reason code, then explain the next step. Do not file anything.
 
@@ -1209,7 +1209,7 @@ Tool/retrieval spans цього ходу (дослівні JSON-поля):
 ~~~
 
 Хід 10; request_id 48601c1c353b4f0e
-Перевірки: 
+Перевірки: native PASS; binding потребує окремої перевірки
 ~~~text
 For that original charge, state its applicable filing window in days and the exact filing deadline. Do I still have time? Do not file anything.
 
