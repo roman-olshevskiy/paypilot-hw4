@@ -1,0 +1,325 @@
+{
+  "analysis_date": "2026-10-18",
+  "runs": [
+    {
+      "folder": "evidence/hw4-runs/20261017T210026671844-clean",
+      "report": "reports/l05_dialogs-clean-20261017T210026.json",
+      "ran_at": "2026-10-17T21:01:05.053208+00:00",
+      "set_hash": "47f27ca24364",
+      "profile": "clean",
+      "passed_cases": 1,
+      "total_cases": 1,
+      "chat_requests": 7,
+      "agent_loop_calls": 15,
+      "summarizer_calls": 1,
+      "provider_calls_including_summaries": 16,
+      "models": [
+        "claude-haiku-5-5"
+      ],
+      "chat_root_usage": {
+        "input_tokens": 60139,
+        "output_tokens": 4595
+      },
+      "chat_root_cost_usd": 0.008312,
+      "summary_usage_reported": false,
+      "settings_restored": true,
+      "repeats": [
+        {
+          "case": "CONV-H01",
+          "repeat": 1,
+          "session_id": "9dc8497e5664",
+          "v2_replay_passed": true,
+          "checks": [
+            {
+              "turn": 3,
+              "assertion": "has_span",
+              "label": "agent.summarize is in the trace",
+              "defect": "",
+              "precondition": true,
+              "passed": true,
+              "level": 1,
+              "detail": "span agent.summarize present",
+              "hint": "Without agent.summarize the case tests nothing: lower the threshold (--summarize-after 2)"
+            },
+            {
+              "turn": 5,
+              "assertion": "numeric",
+              "label": "dispute_amount_eur still holds",
+              "defect": "D06",
+              "precondition": false,
+              "passed": true,
+              "level": 2,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 5,
+              "assertion": "regex",
+              "label": "reason_code still holds",
+              "defect": "D07",
+              "precondition": false,
+              "passed": true,
+              "level": 3,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 5,
+              "assertion": "not_regex",
+              "label": "reason_code: no substitute",
+              "defect": "D07",
+              "precondition": false,
+              "passed": true,
+              "level": 4,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 7,
+              "assertion": "numeric",
+              "label": "filing_window_days still holds",
+              "defect": "D07",
+              "precondition": false,
+              "passed": true,
+              "level": 2,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 1,
+              "assertion": "numeric",
+              "label": "initial oracle: transaction amount",
+              "defect": "",
+              "precondition": false,
+              "passed": true,
+              "level": 2,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 1,
+              "assertion": "regex",
+              "label": "initial oracle: scenario reason code",
+              "defect": "",
+              "precondition": false,
+              "passed": true,
+              "level": 3,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 2,
+              "assertion": "numeric",
+              "label": "initial oracle: filing window",
+              "defect": "",
+              "precondition": false,
+              "passed": true,
+              "level": 2,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 7,
+              "assertion": "regex",
+              "label": "independent oracle: filing deadline",
+              "defect": "",
+              "precondition": false,
+              "passed": true,
+              "level": 3,
+              "detail": "",
+              "hint": ""
+            }
+          ],
+          "first_memory_fail_turn": null,
+          "oracle_failures": [],
+          "first_summary_without_amount_turn": null,
+          "summary_evidence": [
+            {
+              "turn": 3,
+              "request_id": "bf6a2f3f7d1e45d7",
+              "text": "**Case summary: TX-0401 (goods not received)**\n\n- **Customer:** CUS-0004, Danylo Kovalenko, tier1\n- **Account:** ACC-1005, EUR, balance 1,310.20 EUR\n- **Transaction:** TX-0401, **EUR 240.00** outbound card payment to TechMart Online on 2026-07-20, status settled\n- **Customer's complaint:** goods were never received\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from transaction date (per disputes.md reason-code table)\n- **Deadline:** 2026-10-18\n- **Eligibility check (as of 2026-09-15):** eligible. Reason code, transaction status, window, and compliance hold all passed.\n- **Review target:** 10 business days for card reason codes, per disputes-process.md. Foreign-acquirer cases can run to 45 calendar days, and the customer is notified if so.\n- **Status:** No dispute has been created or filed. The agent has committed only to opening one if the customer asks.\n\n**Related transactions on ACC-1005 (not in scope, noted for reference):**\n- TX-0402: EUR 240.00, TechMart Online, 2026-07-14, settled. Same merchant and amount as TX-0401.\n- TX-0403: EUR 35.50, CityParking, 2026-09-01, settled.",
+              "amount_240_present": true,
+              "amount_180_present": false,
+              "correct_reason_literal_present": true,
+              "substituted_reason_literal_present": false,
+              "replaced_messages": 11
+            }
+          ],
+          "chat_requests": 7,
+          "request_ids": [
+            "1df44264cafb46d9",
+            "68f69d9694f34b0b",
+            "bf6a2f3f7d1e45d7",
+            "f81a283ee2ab4670",
+            "6a6d60ef91c64bf0",
+            "4dc92f94c79f4391",
+            "8f429e1a4eb34007"
+          ]
+        }
+      ]
+    },
+    {
+      "folder": "evidence/hw4-runs/20261017T210115100026-lesson-05",
+      "report": "reports/l05_dialogs-lesson-05-20261017T210115.json",
+      "ran_at": "2026-10-17T21:01:51.833850+00:00",
+      "set_hash": "47f27ca24364",
+      "profile": "lesson-05",
+      "passed_cases": 1,
+      "total_cases": 1,
+      "chat_requests": 7,
+      "agent_loop_calls": 15,
+      "summarizer_calls": 1,
+      "provider_calls_including_summaries": 16,
+      "models": [
+        "claude-haiku-5-5"
+      ],
+      "chat_root_usage": {
+        "input_tokens": 60050,
+        "output_tokens": 4868
+      },
+      "chat_root_cost_usd": 0.008438,
+      "summary_usage_reported": false,
+      "settings_restored": true,
+      "repeats": [
+        {
+          "case": "CONV-H01",
+          "repeat": 1,
+          "session_id": "4caff8884d77",
+          "v2_replay_passed": false,
+          "checks": [
+            {
+              "turn": 3,
+              "assertion": "has_span",
+              "label": "agent.summarize is in the trace",
+              "defect": "",
+              "precondition": true,
+              "passed": true,
+              "level": 1,
+              "detail": "span agent.summarize present",
+              "hint": "Without agent.summarize the case tests nothing: lower the threshold (--summarize-after 2)"
+            },
+            {
+              "turn": 5,
+              "assertion": "numeric",
+              "label": "dispute_amount_eur still holds",
+              "defect": "D06",
+              "precondition": false,
+              "passed": true,
+              "level": 2,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 5,
+              "assertion": "regex",
+              "label": "reason_code still holds",
+              "defect": "D07",
+              "precondition": false,
+              "passed": true,
+              "level": 3,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 5,
+              "assertion": "not_regex",
+              "label": "reason_code: no substitute",
+              "defect": "D07",
+              "precondition": false,
+              "passed": false,
+              "level": 4,
+              "detail": "forbidden pattern matched \"can't reliably repeat\"",
+              "hint": ""
+            },
+            {
+              "turn": 7,
+              "assertion": "numeric",
+              "label": "filing_window_days still holds",
+              "defect": "D07",
+              "precondition": false,
+              "passed": true,
+              "level": 2,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 1,
+              "assertion": "numeric",
+              "label": "initial oracle: transaction amount",
+              "defect": "",
+              "precondition": false,
+              "passed": true,
+              "level": 2,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 1,
+              "assertion": "regex",
+              "label": "initial oracle: scenario reason code",
+              "defect": "",
+              "precondition": false,
+              "passed": true,
+              "level": 3,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 2,
+              "assertion": "numeric",
+              "label": "initial oracle: filing window",
+              "defect": "",
+              "precondition": false,
+              "passed": true,
+              "level": 2,
+              "detail": "",
+              "hint": ""
+            },
+            {
+              "turn": 7,
+              "assertion": "regex",
+              "label": "independent oracle: filing deadline",
+              "defect": "",
+              "precondition": false,
+              "passed": true,
+              "level": 3,
+              "detail": "",
+              "hint": ""
+            }
+          ],
+          "first_memory_fail_turn": 5,
+          "oracle_failures": [],
+          "first_summary_without_amount_turn": 3,
+          "summary_evidence": [
+            {
+              "turn": 3,
+              "request_id": "6d267c6d9ef34208",
+              "text": "The customer asked about a card payment to an online merchant for goods that never arrived. I confirmed the transaction details and the applicable reason code, then checked dispute eligibility and the filing window. Eligibility checks passed. The customer has not filed or submitted any dispute, and the conversation was informational only.",
+              "amount_240_present": false,
+              "amount_180_present": false,
+              "correct_reason_literal_present": false,
+              "substituted_reason_literal_present": false,
+              "replaced_messages": 11
+            }
+          ],
+          "chat_requests": 7,
+          "request_ids": [
+            "6d3e7a4d5ed34479",
+            "78d457530ca64961",
+            "6d267c6d9ef34208",
+            "87b82353e92849a3",
+            "2b28c443e80d43e3",
+            "8ec18c6497ce4af2",
+            "13ddb8615c884811"
+          ]
+        }
+      ]
+    }
+  ],
+  "total_chat_requests": 14,
+  "total_provider_calls_including_summaries": 32,
+  "chat_root_cost_usd": 0.01675,
+  "billing_verified": false,
+  "cost_limitations": "Summarizer input/output and cache billing categories are absent from chat/root usage; cost is not a provider invoice.",
+  "mechanism_limitations": "Summary text is authentic trace data. Full provider message bodies are not logged; claims about history rely on summary evidence plus matched runtime code and per-turn tool/retrieval spans."
+}

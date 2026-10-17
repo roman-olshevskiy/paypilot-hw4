@@ -1,0 +1,25 @@
+{
+  "profile": "lesson-05",
+  "argv": [
+    "--set",
+    "l05_dialogs",
+    "--gate",
+    "release",
+    "--profile",
+    "lesson-05",
+    "--traces",
+    "--only",
+    "CONV-H01",
+    "--repeat",
+    "1"
+  ],
+  "runner_exit_code": 0,
+  "chat_requests": 7,
+  "reports": [
+    "l05_dialogs-lesson-05-20261017T210115.json"
+  ],
+  "report_sha256": {
+    "l05_dialogs-lesson-05-20261017T210115.json": "ccf7f1870c24f3458d7c4f8db6245db45373b8b08e1ad9e983a71f7f4ccb4566"
+  },
+  "usage_scope": "Chat/root usage excludes unreported summarizer usage; separate overhead must not be silently treated as zero."
+}

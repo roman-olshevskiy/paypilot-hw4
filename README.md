@@ -1,6 +1,6 @@
 # L05 · Multi-turn Test Plan — PayPilot · ДЗ №4
 
-Мандат Ship it. Статус: пілот v1 завершено; full v2 ще не виконано.
+Мандат Ship it. Статус: пілот v1 завершено; full v2 на clean виконується, lesson-05 ще не починався.
 Докази збираємо з нуля на локальному paypilot-stand-shared.
 
 ## Запуск
@@ -44,8 +44,8 @@ H01 конкретизує схематичний C-07: goods never arrived за
 
 | Прогін | Профіль | Результат | Звіт |
 |---|---|---|---|
-| Pilot H01 ×1 | clean | ще не виконано | — |
-| Pilot H01 ×1 | lesson-05 | ще не виконано | — |
+| Pilot H01 ×1, v1 | clean | 1/1 | [raw](reports/l05_dialogs-clean-20261017T210026.json) |
+| Pilot H01 ×1, v1 | lesson-05 | 1/1 — false PASS, див. нижче | [raw](reports/l05_dialogs-lesson-05-20261017T210115.json) |
 | Повна серія ×5 | clean | ще не виконано | — |
 | Повна серія ×5 | lesson-05 | ще не виконано | — |
 
@@ -66,3 +66,17 @@ Root/chat usage не включає непоказані токени сумар
 - evidence/preflight.json — справжній read-only unittest, без chat/model calls.
 - tests/test_offline_hw4.py — 5/5 offline-тестів: позитивні/негативні перевірки, передумови та restore.
 \n## Прогноз v2 перед повною серією\n\n[Окремий прогноз](docs/forecast-v2-before-runs.md). Пілот v1 (47f27ca24364) збережено; виявлений false PASS описано у evidence/revision-v2.json. Поточний v2 додає L4 no-reconfirmation.\n
+## Пілот: чому змінено набір
+
+У summary lesson-05 на ході 3 немає суми, дати, transaction id і canonical reason code.
+На ході 5 агент перепитав, про яку з двох транзакцій ідеться, але навів 240 і goods_not_received як кандидатів.
+Тому v1 numeric/regex дали false PASS. Offline replay тих самих відповідей проти v2 дає FAIL;
+це нова оцінка, а не редагування первинного звіту.
+
+Пілот: 14 chat requests, 32 provider calls з урахуванням двох summaries; root cost USD0.01675.
+За пілотом проекція full root cost ≈USD0.467; плановий запас USD2, не гарантована верхня межа.
+Сумаризатор не має записаного usage, тому загальну суму треба додатково звірити з білінгом.
+
+Контроль runtime-provenance passed: hash loop/summarizer/disputes/policy у контейнері збігається з локальним shared.
+Штатні traces містять summary і tool/retrieval spans, але не повні raw provider messages.
+Невідомі входи не видаються за дослівні snapshots.
