@@ -1,0 +1,12 @@
+{
+  "basis": "Two actual 7-turn pilot runs of set v1 47f27ca24364",
+  "available_balance_usd": 17.57,
+  "pilot_chat_requests": 14,
+  "pilot_root_usage_cost_usd": 0.01675,
+  "full_series_requests": 390,
+  "projected_full_root_usage_cost_usd": 0.46660714285714294,
+  "planning_reserve_usd": 2.0,
+  "not_a_hard_upper_bound": true,
+  "unreported_usage": "Summarizer tokens/cost are not present in chat/root usage",
+  "billing_verified": false
+}

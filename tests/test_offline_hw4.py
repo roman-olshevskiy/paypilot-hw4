@@ -47,6 +47,16 @@ class OfflineHW4(unittest.TestCase):
                     turns[t-1]["answer"]="180 EUR service_not_rendered, 60 days, 2026-12-13"
             self.assertFalse(runner._dialog_run(case,{"turns":turns}).passed,case["id"])
 
+    def test_candidate_numbers_do_not_hide_reconfirmation(self):
+        case=self.cases[0]
+        turns=[{"answer":"240 EUR goods_not_received 90 days 2026-10-18","trace":{}}
+               for _ in case["turns"]]
+        turns[2]["trace"]={"name":"agent.summarize"}
+        turns[4]["answer"]=("I can't reliably repeat the earlier details. "
+                            "TX-0401 and TX-0402 are both EUR240. "
+                            "Which one is the charge? It might be goods_not_received.")
+        self.assertFalse(runner._dialog_run(case,{"turns":turns}).passed)
+
     def test_absent_summary_and_short_dialog_are_not_green(self):
         case=self.cases[0]
         run={"turns":[{"answer":"240 EUR goods_not_received 90 days 2026-10-18","trace":{}}

@@ -1,0 +1,31 @@
+{
+  "sha256": "47f27ca24364065eea6116daa673c9d6ec3e2172751c78bb8a3f93a3c8b3a7a9",
+  "cases": 5,
+  "chat_requests_per_profile": 195,
+  "oracle": {
+    "eligible": true,
+    "reason_code": "goods_not_received",
+    "window_days": 90,
+    "tx_date": "2026-07-20",
+    "as_of": "2026-09-15",
+    "deadline": "2026-10-18",
+    "checks": {
+      "reason_code": "pass",
+      "tx_status": "pass",
+      "window": "pass",
+      "compliance_hold": "pass"
+    }
+  },
+  "transaction": [
+    "TX-0401",
+    "ACC-1005",
+    "2026-07-20",
+    240.0,
+    "EUR",
+    "TechMart Online",
+    "out",
+    "card",
+    "settled"
+  ],
+  "generator_sha256": "76f6ffbcf3ed25f2743a8b7a7fc2c6a0a6bb36a57457aeffff350d5e7a039793"
+}

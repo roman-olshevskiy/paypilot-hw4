@@ -75,6 +75,11 @@ def cases():
              "oracle_turn": 2, "oracle_by": "engine:disputes.check.window_days",
              "defect": "D07"},
         ]
+        # A correct candidate in a list is not evidence of case retention.
+        invs[1]["forbid"] = (
+            r"(?is)\b(?:which\s+(?:one|transaction|charge)|"
+            r"(?:please|could you|can you)\s+confirm\s+(?:the\s+)?(?:amount|transaction|charge)|"
+            r"(?:can(?:not|'t)|unable to)\s+(?:reliably\s+)?(?:repeat|recall|identify))")
         if entities == 3:
             invs.append({"entity": "transaction_date", "from_turn": 1, "level": 3,
                          "probe_turns": [8], "pattern": r"2026-07-20",

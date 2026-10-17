@@ -1,5 +1,5 @@
 {
-  "sha256": "47f27ca24364065eea6116daa673c9d6ec3e2172751c78bb8a3f93a3c8b3a7a9",
+  "sha256": "d7ea1a1c292f498d48c311229d82d3b35f95a98d11df45f9c2996351e355141e",
   "cases": 5,
   "chat_requests_per_profile": 195,
   "oracle": {
@@ -27,5 +27,5 @@
     "card",
     "settled"
   ],
-  "generator_sha256": "76f6ffbcf3ed25f2743a8b7a7fc2c6a0a6bb36a57457aeffff350d5e7a039793"
+  "generator_sha256": "83a794bb4acb116461868f0f0647fb67d3d4dad019d2bba1ba10d5b9eb55145f"
 }
