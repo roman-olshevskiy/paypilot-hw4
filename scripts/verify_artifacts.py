@@ -1,6 +1,7 @@
 """Validate immutable evidence and completeness offline, without stand calls."""
 import hashlib
 import json
+from datetime import datetime
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -15,6 +16,8 @@ def main():
     assert len(full)==2 and data["total_chat_requests"]==404
     assert {x["set_hash"] for x in full}=={sha(ROOT/"l05_dialogs.jsonl")[:12]}
     ids=[];sessions=[]
+    forecast=read(ROOT/"evidence/forecast-v2-commit.json")
+    committed=datetime.fromisoformat(forecast["committed_at"]).timestamp()
     for run in data["runs"]:
         folder=ROOT/run["folder"]
         manifest=read(folder/"manifest.json")
@@ -29,6 +32,11 @@ def main():
             assert {x["response"]["session_id"] for x in part}=={rep["session_id"]}
         assert run["settings_restored"]
         if run in full:
+            assert committed < min(x["trace"]["started_at"] for x in rows)
+            raw=read(ROOT/run["report"])
+            for case in raw["cases"]:
+                reps=[x for x in run["repeats"] if x["case"]==case["id"]]
+                assert [x["v2_replay_passed"] for x in reps]==[x["passed"] for x in case["runs_detail"]]
             assert len(run["repeats"])==25
             assert all(sum(x["case"]==cid for x in run["repeats"])==5
                        for cid in ["CONV-H01","CONV-H02","CONV-H03","CONV-H04","CONV-H05"])
@@ -43,14 +51,14 @@ def main():
         if p.suffix in [".md",".json",".jsonl",".py",".txt"]:
             txt=p.read_text(encoding="utf-8")
             for prefix in ["sk-ant-api03-","ghp_","github_pat_"]:
-                if prefix in txt:prohibited.append(str(p.relative_to(ROOT)))
+                if prefix in txt:prohibited.append(p.relative_to(ROOT).as_posix())
     # Prefix constants above occur only in this audit source.
     assert set(prohibited)<= {"scripts/verify_artifacts.py"},prohibited
     result={"status":"passed","chat_requests":len(ids),"independent_sessions":len(sessions),
             "full_dialogs_per_profile":25,"raw_report_hashes_valid":True,
             "settings_restored_all_runs":True,"prior_golden_hashes_unchanged":True,
             "tracked_secret_prefix_scan":"no credentials found; local scan is not a security guarantee"}
-    (ROOT/"evidence/artifact-checks.json").write_bytes((json.dumps(result,ensure_ascii=False,indent=2)+"\\n").encode())
+    (ROOT/"evidence/artifact-checks.json").write_bytes((json.dumps(result,ensure_ascii=False,indent=2)+chr(10)).encode())
     print(json.dumps(result,indent=2))
 
 if __name__=="__main__":main()

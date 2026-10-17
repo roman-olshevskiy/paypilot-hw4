@@ -1,0 +1,12 @@
+{
+  "verification_date": "2026-10-18",
+  "source": "Direct confirmation in this chat: available balance is now USD17.10; before runs USD17.57",
+  "method": "available-balance delta, values shown to two decimal places",
+  "balance_before_usd": 17.57,
+  "balance_after_usd": 17.1,
+  "observed_delta_usd": 0.47,
+  "chat_root_cost_usd": 0.454939,
+  "difference_usd": 0.015061,
+  "verified": true,
+  "scope": "Balance reconciliation, not an itemized provider invoice; difference is not allocated to summarizer/cache/rounding."
+}

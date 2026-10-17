@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H01",
+  "run": 3,
+  "turn": 6,
+  "user": "The amount is 240 euro, as I said at the start.",
+  "answer": "You're right that the charge is 240.00 EUR. The ledger shows two settled 240.00 EUR card payments to TechMart Online, so I need you to confirm which one you mean:\n\n- **TX-0402**, 2026-07-14, 240.00 EUR, settled\n- **TX-0401**, 2026-07-20, 240.00 EUR, settled\n\nMy earlier notes recorded 180.00 EUR, which doesn't match any transaction on ACC-1005, so I'm not using that figure.\n\nNothing has been filed. Once you tell me which transaction it is and whether the goods were never delivered (`goods_not_received`) or a service wasn't provided (`service_not_rendered`), I'll run the eligibility check. I'll only open a dispute if that check passes, and I'll confirm with you before filing.",
+  "trace": {
+    "request_id": "eeb06e45000c412d",
+    "name": "agent.request",
+    "span_id": "843c9d4e45ca4e93",
+    "started_at": 1792272031.4746063,
+    "ended_at": 1792272035.4745662,
+    "duration_ms": 4000.0,
+    "attributes": {
+      "session.id": "e24bdd53fee8",
+      "dialog.step_number": 6,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5412,
+      "gen_ai.usage.total_output_tokens": 705
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "9082847da72746c3",
+        "started_at": 1792272031.4749978,
+        "ended_at": 1792272035.4745278,
+        "duration_ms": 3999.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5412,
+          "gen_ai.usage.output_tokens": 705
+        },
+        "children": []
+      }
+    ]
+  }
+}

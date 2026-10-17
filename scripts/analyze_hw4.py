@@ -138,7 +138,7 @@ def main():
           "total_chat_requests":total_requests,
           "total_provider_calls_including_summaries":sum(run["provider_calls_including_summaries"] for run in runs),
           "chat_root_cost_usd":round(sum(run["chat_root_cost_usd"] for run in runs),6),
-          "billing_verified":False,
+          "billing_verified":(read(ROOT/"evidence/billing-reconciliation.json").get("verified",False) if (ROOT/"evidence/billing-reconciliation.json").exists() else False),
           "cost_limitations":"Summarizer input/output and cache billing categories are absent from chat/root usage; cost is not a provider invoice.",
           "mechanism_limitations":"Summary text is authentic trace data. Full provider message bodies are not logged; claims about history rely on summary evidence plus matched runtime code and per-turn tool/retrieval spans."}
     save(ROOT/"evidence/run-analysis.json",data)

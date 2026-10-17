@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H03",
+  "run": 3,
+  "turn": 9,
+  "user": "The amount is 240 euro, as I said at the start.",
+  "answer": "You're right, the amount is EUR 240.00. Both TechMart Online charges on your account are EUR 240.00, though, so I still need to know which one you mean:\n\n- **TX-0402**: 14 July 2026\n- **TX-0401**: 20 July 2026\n\nPlease also confirm the reason code. Goods that never arrived matches **goods_not_received**.\n\nNothing has been filed. Once you confirm the transaction and reason code, I'll run the eligibility check. I'll open the dispute only if it passes.",
+  "trace": {
+    "request_id": "89ed96a112d54c9d",
+    "name": "agent.request",
+    "span_id": "d08cb5f68ac44d03",
+    "started_at": 1792272407.489822,
+    "ended_at": 1792272410.2509344,
+    "duration_ms": 2761.1,
+    "attributes": {
+      "session.id": "bf1ee227dd52",
+      "dialog.step_number": 9,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6720,
+      "gen_ai.usage.total_output_tokens": 392
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "c65b89690c784abf",
+        "started_at": 1792272407.4902399,
+        "ended_at": 1792272410.2509043,
+        "duration_ms": 2760.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6720,
+          "gen_ai.usage.output_tokens": 392
+        },
+        "children": []
+      }
+    ]
+  }
+}

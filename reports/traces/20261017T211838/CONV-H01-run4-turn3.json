@@ -1,0 +1,140 @@
+{
+  "case": "CONV-H01",
+  "run": 4,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily transfer limit on file is **EUR 5,000**, and you have the full EUR 5,000 remaining today (EUR 0 spent so far, as of 2026-09-15). Your monthly limit is EUR 50,000, with EUR 35.50 used and EUR 49,964.50 remaining.\n\nMy limit check covers transfers in general. It does not show a separate card-only limit, so I can't confirm whether card payments have a different cap.\n\nThe dispute for the undelivered online purchase is still unfiled. It passed the eligibility check, and I'll open it once you confirm you want to proceed.",
+  "trace": {
+    "request_id": "24c80d88c18a4b88",
+    "name": "agent.request",
+    "span_id": "26cf2e211e574cef",
+    "started_at": 1792272050.787475,
+    "ended_at": 1792272057.8769119,
+    "duration_ms": 7089.4,
+    "attributes": {
+      "session.id": "ab9c8e318a72",
+      "dialog.step_number": 3,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 9181,
+      "gen_ai.usage.total_output_tokens": 577
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "8f4d64a5e61648f3",
+        "started_at": 1792272050.7877796,
+        "ended_at": 1792272052.8574722,
+        "duration_ms": 2069.7,
+        "attributes": {
+          "summary.text": "The customer is disputing a card charge to an online retailer for goods that were never delivered. We confirmed the charge details and the applicable reason code, and checked that the charge is still within the filing window. Eligibility passed. No dispute has been filed; we are waiting for the customer to confirm before opening one.",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "f162a42d55444edc",
+        "started_at": 1792272052.8575242,
+        "ended_at": 1792272054.4853582,
+        "duration_ms": 1627.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2900,
+          "gen_ai.usage.output_tokens": 183
+        },
+        "children": []
+      },
+      {
+        "name": "tool.get_account",
+        "span_id": "36ac50e14869447a",
+        "started_at": 1792272054.485397,
+        "ended_at": 1792272054.4859555,
+        "duration_ms": 0.6,
+        "attributes": {
+          "tool.name": "get_account",
+          "tool.arguments": {},
+          "tool.result": {
+            "customer": {
+              "id": "CUS-0004",
+              "name": "Danylo Kovalenko",
+              "tier": "tier1"
+            },
+            "accounts": [
+              {
+                "id": "ACC-1005",
+                "customer_id": "CUS-0004",
+                "currency": "EUR",
+                "balance": 1310.2,
+                "tier": "tier1",
+                "holder": "Danylo Kovalenko"
+              }
+            ]
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "03365266f2a54f08",
+        "started_at": 1792272054.4860468,
+        "ended_at": 1792272055.5992036,
+        "duration_ms": 1113.2,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3053,
+          "gen_ai.usage.output_tokens": 56
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "60ca24588f7d418a",
+        "started_at": 1792272055.5992813,
+        "ended_at": 1792272055.6008575,
+        "duration_ms": 1.6,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "32508ca0c81e4937",
+        "started_at": 1792272055.601023,
+        "ended_at": 1792272057.8768532,
+        "duration_ms": 2275.8,
+        "attributes": {
+          "agent.loop_step": 2,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3228,
+          "gen_ai.usage.output_tokens": 338
+        },
+        "children": []
+      }
+    ]
+  }
+}

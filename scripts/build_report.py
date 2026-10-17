@@ -31,6 +31,8 @@ def main():
         for run in [clean,variant]:
             reps=[x for x in run["repeats"] if x["case"]==cid]
             cells.append(f"{sum(x['v2_replay_passed'] for x in reps)}/{len(reps)}")
+        firsts=[x["first_memory_fail_turn"] for x in variant["repeats"] if x["case"]==cid and x["first_memory_fail_turn"] is not None]
+        cells.append(f"{min(firsts)}–{max(firsts)}" if firsts else "не виявлено")
         rows.append("| "+cid+" | "+" | ".join(cells)+" |")
     loss_rows="".join("| "+str(x["repeat"])+" | "+fmt(x["first_summary_without_amount_turn"])+
                       " | "+fmt(x["first_memory_fail_turn"])+" |"+chr(10) for x in h01)
@@ -114,17 +116,20 @@ def main():
                "Знаменник — п’ять діалогів; якщо probe кілька, діалог враховано один раз.",
                "| Кейс | Перевірка | Clean FAIL | Lesson-05 FAIL |",
                "|---|---|---|---|"]+failure_rows
-    appendix+=["", "## Усі провалені повтори: джерела входу та відповіді",
+    appendix+=["", "## Усі FAIL і нативні PASS lesson-05: джерела входу та відповіді",
                "Raw traces є джерелом summary/tool даних. Перелік нижче містить кожен FAIL повної серії, без вибіркового приховування clean."]
     for run in [clean,variant]:
         captures=read(ROOT/run["folder"]/"captures.json")
         for rep in run["repeats"]:
-            if rep["v2_replay_passed"]:continue
+            if rep["v2_replay_passed"] and run["profile"]=="clean":continue
             appendix+=["",f"### {run['profile']} / {rep['case']} / повтор {rep['repeat']}"]
             part=[x for x in captures if x["case"]==rep["case"] and x["run"]==rep["repeat"]]
             for sm in rep["summary_evidence"]:
                 appendix+=["",f"Summary, хід {sm['turn']}; request_id {sm['request_id']}", "~~~text",sm["text"],"~~~"]
             failedturns=sorted({c["turn"] for c in rep["checks"] if not c["passed"] and isinstance(c["turn"],int)})
+            if rep["v2_replay_passed"]:
+                appendix+=["", "Нативний PASS: перевірити binding за фактичним текстом; не прирівнювати його до збереженої пам’яті."]
+                failedturns=sorted({c["turn"] for c in rep["checks"] if not c["label"].startswith("initial oracle") and isinstance(c["turn"],int)})
             for turn in failedturns:
                 row=next(x for x in part if x["turn"]==turn)
                 appendix+=["",f"Хід {turn}; request_id {row['response']['request_id']}",
@@ -170,8 +175,8 @@ clean має пройти, lesson-05 — дати failures після summary н
 Clean: {clean["passed_cases"]}/5 кейсів повністю зелені; lesson-05: {variant["passed_cases"]}/5.
 Тут кейс зелений, лише якщо пройшли всі його п’ять повторів.
 
-| Кейс | Clean: зелених діалогів | Lesson-05: зелених діалогів |
-|---|---|---|
+| Кейс | Clean: нативних PASS | Lesson-05: нативних PASS | Перший FAIL lesson-05: діапазон |
+|---|---|---|---|
 {chr(10).join(rows)}
 
 Для H01 крок втрати означає summary без вихідної суми, а крок прояву — першу провалену memory-перевірку.
@@ -211,11 +216,12 @@ Summary завжди на ході 3: ця серія вимірює наслі�
 
 Фактичні summary повної серії:
 
-| Профіль | Summary | Без 240 | Є 180 | Є goods_not_received | Є service_not_rendered |
+| Профіль | Summary | Без 240 | Є 180 | Є goods not received (варіанти) | Є service not rendered (варіанти) |
 |---|---|---|---|---|---|
 {chr(10).join(summary_matrix)}
 
-Це буквальні ознаки, а не автоматична семантична класифікація: 180 може бути в іншому контексті.
+Пошук приймає underscore/пробіли/дефіси, тому фраза про недоставлені товари теж рахується; це не доказ збереженого canonical code.
+Це ознаки pattern, а не автоматична семантична класифікація: 180 може бути в іншому контексті.
 Приклади фактичного drift у summary (повні тексти — додаток):
 
 {chr(10).join(drift_examples[:3]) or "У цій серії явного 180/canonical substitution у summary не спостерігалося."}
@@ -246,6 +252,7 @@ Reason-code substitution доводиться лише там, де її вид�
 ## 4. Інваріанти й оракули
 
 Для всіх кейсів:
+
 - сума EUR240: from_turn=1, L2, tolerance 0.01; oracle — seed TX-0401 на ході 1;
 - reason goods_not_received: from_turn=1, L3 canonical pattern; oracle — явна скарга «goods never arrived» плюс допустимий reason у policy;
 - window 90: from_turn=2, L2 exact integer; oracle — disputes.check на ході 2;
@@ -258,6 +265,12 @@ Probes: H01=5/7, H02=4/5, H03=8/10, H04=5/7, H05=5/8/10.
 L05 нативно реалізує pattern як L3, а не L1 зі схематичної інструкції.
 Окремі initial-oracle checks відхиляють діалог, який послідовно помиляється з першої відповіді.
 Numeric/regex можуть пропустити mixed/candidate wording: пілот v1 це довів; L4 зменшує, але не усуває цей ризик.
+**False PASS у v2 теж спостерігався:** H03 lesson-05, повтор 2, хід 8.
+Відповідь заперечує можливість підтвердження, перелічує два платежі й просить «Tell me which TechMart charge»,
+але містить 240 і goods_not_received. Поточний guard не охоплює таке формулювання.
+Нативний PASS збережено в raw report; його не зараховуємо як доказ збереженої пам’яті.
+Набір не змінювався під час серії. Для майбутнього CI потрібна окрема калібровка semantic/binding oracle,
+новий hash і нова серія; поточний релізний кейс однаково FAIL через інші повтори.
 
 ## 5. Тест-план і ціна
 
@@ -276,7 +289,9 @@ H04 (7/2/0, контроль теми), H05 (10/3/2, найгірший).
 
 Зареєстрована root/chat cost: full **USD{full_root_cost:.6f}**,
 з пілотом **USD{data["chat_root_cost_usd"]:.6f}**.
-Це оцінка стенду, не підтверджений billing total: usage сумаризатора й cache-категорії не архівовані.
+Звірка за доступним балансом: USD17.57 → USD17.10, тобто ≈USD0.47; це узгоджується з root cost.
+[Підтвердження](evidence/billing-reconciliation.json). Usage сумаризатора й cache-категорії окремо не архівовані;
+різницю USD0.015061 не приписуємо конкретній категорії. Це звірка балансу, не деталізований invoice.
 Бюджет після пілота: проекція root ≈USD0.47, запас USD2 із USD17.57; це не hard cap.
 Повний dialog-набір пропонуємо запускати перед релізом; щодня лишається однокроковий golden ДЗ3 — 42 daily chat requests.
 Оцінювання суддею не використовувалося. Стан профілю, clock, summarize та retrieval після серій відновлено.

@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H03",
+  "run": 5,
+  "turn": 9,
+  "user": "The amount is 240 euro, as I said at the start.",
+  "answer": "Thanks, that matches both TechMart Online charges on ACC-1005: TX-0401 (20 July 2026) and TX-0402 (14 July 2026). To check the right one, I still need two things:\n\n1. **Which charge?** TX-0401 or TX-0402.\n2. **Which reason?** Your description (goods never received) fits **goods_not_received**. The earlier summary used service_not_rendered, which applies to a service that wasn't provided. Tell me which one matches your claim.\n\nOnce you answer, I'll run the eligibility check for that charge and reason code. I won't file anything unless you ask me to after you've seen the result.",
+  "trace": {
+    "request_id": "c1e29492fb4944a3",
+    "name": "agent.request",
+    "span_id": "69efe0ccd39a4bb8",
+    "started_at": 1792272570.2839744,
+    "ended_at": 1792272574.3780866,
+    "duration_ms": 4094.1,
+    "attributes": {
+      "session.id": "1f110035e990",
+      "dialog.step_number": 9,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6531,
+      "gen_ai.usage.total_output_tokens": 567
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "e3ccb7a1d4764f7f",
+        "started_at": 1792272570.284586,
+        "ended_at": 1792272574.3780534,
+        "duration_ms": 4093.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6531,
+          "gen_ai.usage.output_tokens": 567
+        },
+        "children": []
+      }
+    ]
+  }
+}

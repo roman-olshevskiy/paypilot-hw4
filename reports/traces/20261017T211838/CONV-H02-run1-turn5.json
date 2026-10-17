@@ -1,0 +1,119 @@
+{
+  "case": "CONV-H02",
+  "run": 1,
+  "turn": 5,
+  "user": "For that original charge, state its applicable filing window in days and the exact filing deadline. Do I still have time? Do not file anything.",
+  "answer": "The filing window for goods-not-received is **90 days** from the transaction date. I checked both TechMart Online charges because I can't confirm from our conversation which one you mean:\n\n- **TX-0402** (EUR 240.00, 14 July 2026): deadline **12 October 2026**. Eligible.\n- **TX-0401** (EUR 240.00, 20 July 2026): deadline **18 October 2026**. Eligible.\n\nAs of today, 15 September 2026, you have time for both. Each passed the reason-code, status, window and account-hold checks.\n\nNothing has been filed. To proceed, tell me which transaction to dispute and confirm you want the goods-not-received reason. I'll then ask for your final go-ahead before opening the dispute.",
+  "trace": {
+    "request_id": "edc87cd1d5534919",
+    "name": "agent.request",
+    "span_id": "bec6159f6e914806",
+    "started_at": 1792272145.542238,
+    "ended_at": 1792272150.696491,
+    "duration_ms": 5154.3,
+    "attributes": {
+      "session.id": "3efd33fa7a81",
+      "dialog.step_number": 5,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 10731,
+      "gen_ai.usage.total_output_tokens": 825
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "a4afb0c0db3541a2",
+        "started_at": 1792272145.542885,
+        "ended_at": 1792272148.311937,
+        "duration_ms": 2769.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5125,
+          "gen_ai.usage.output_tokens": 464
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_dispute_eligibility",
+        "span_id": "9d013abde74b4ed3",
+        "started_at": 1792272148.312029,
+        "ended_at": 1792272148.3131769,
+        "duration_ms": 1.1,
+        "attributes": {
+          "tool.name": "check_dispute_eligibility",
+          "tool.arguments": {
+            "transaction_id": "TX-0402",
+            "reason_code": "goods_not_received"
+          },
+          "tool.result": {
+            "eligible": true,
+            "reason_code": "goods_not_received",
+            "window_days": 90,
+            "tx_date": "2026-07-14",
+            "as_of": "2026-09-15",
+            "deadline": "2026-10-12",
+            "checks": {
+              "reason_code": "pass",
+              "tx_status": "pass",
+              "window": "pass",
+              "compliance_hold": "pass"
+            }
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_dispute_eligibility",
+        "span_id": "2a26a018f30a4517",
+        "started_at": 1792272148.3132286,
+        "ended_at": 1792272148.3138936,
+        "duration_ms": 0.7,
+        "attributes": {
+          "tool.name": "check_dispute_eligibility",
+          "tool.arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "goods_not_received"
+          },
+          "tool.result": {
+            "eligible": true,
+            "reason_code": "goods_not_received",
+            "window_days": 90,
+            "tx_date": "2026-07-20",
+            "as_of": "2026-09-15",
+            "deadline": "2026-10-18",
+            "checks": {
+              "reason_code": "pass",
+              "tx_status": "pass",
+              "window": "pass",
+              "compliance_hold": "pass"
+            }
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "0df34370a51445ad",
+        "started_at": 1792272148.3139346,
+        "ended_at": 1792272150.696414,
+        "duration_ms": 2382.5,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5606,
+          "gen_ai.usage.output_tokens": 361
+        },
+        "children": []
+      }
+    ]
+  }
+}
