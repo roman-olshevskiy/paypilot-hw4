@@ -1,6 +1,6 @@
 # L05 · Multi-turn Test Plan — PayPilot · ДЗ №4
 
-Мандат Ship it. Статус: підготовка завершена; живих результатів ще немає.
+Мандат Ship it. Статус: пілот v1 завершено; full v2 ще не виконано.
 Докази збираємо з нуля на локальному paypilot-stand-shared.
 
 ## Запуск
@@ -16,7 +16,7 @@ docker compose run --rm eval --set l05_dialogs --gate release --profile lesson-0
 ~~~
 
 У кейсах summarize_after=2, runs=5. Кожен повтор починає нову сесію.
-set_hash: **47f27ca24364**. Повний hash і незалежний oracle — evidence/dataset-manifest.json.
+Поточний v2 set_hash: **d7ea1a1c292f**. Повний hash і незалежний oracle — evidence/dataset-manifest.json.
 Для збирання повних відповідей і автоматичного restore використовується власний tests/test_live_hw4.py,
 який запускає незмінний runner через scripts/hw4_capture.py у Docker.
 JUDGE_MODEL=not-used: усі перевірки рівнів 2/3, платного судді немає.
@@ -65,3 +65,4 @@ Root/chat usage не включає непоказані токени сумар
 - evidence/preparation-manifest.json — версії й захищені hashes попередніх golden.
 - evidence/preflight.json — справжній read-only unittest, без chat/model calls.
 - tests/test_offline_hw4.py — 5/5 offline-тестів: позитивні/негативні перевірки, передумови та restore.
+\n## Прогноз v2 перед повною серією\n\n[Окремий прогноз](docs/forecast-v2-before-runs.md). Пілот v1 (47f27ca24364) збережено; виявлений false PASS описано у evidence/revision-v2.json. Поточний v2 додає L4 no-reconfirmation.\n
