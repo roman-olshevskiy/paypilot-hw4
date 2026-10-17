@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H01",
+  "run": 2,
+  "turn": 6,
+  "user": "The amount is 240 euro, as I said at the start.",
+  "answer": "Yes, that matches. TX-0401 is a **240.00 EUR** charge to TechMart Online, dated 2026-07-20, with the reason code `goods_not_received`. Nothing has been filed.\n\nWould you like me to run the eligibility check on TX-0401 now? It is read-only and does not open a dispute. A dispute would only be opened if you confirm after the check.",
+  "trace": {
+    "request_id": "e011c49f03c74e18",
+    "name": "agent.request",
+    "span_id": "a1870dc988ec4a71",
+    "started_at": 1792271112.472274,
+    "ended_at": 1792271115.0655994,
+    "duration_ms": 2593.3,
+    "attributes": {
+      "session.id": "fc05672e1ad3",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4692,
+      "gen_ai.usage.total_output_tokens": 340
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "26d5f4d9527d4438",
+        "started_at": 1792271112.4724352,
+        "ended_at": 1792271115.065562,
+        "duration_ms": 2593.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4692,
+          "gen_ai.usage.output_tokens": 340
+        },
+        "children": []
+      }
+    ]
+  }
+}

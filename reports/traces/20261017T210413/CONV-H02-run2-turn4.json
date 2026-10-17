@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H02",
+  "run": 2,
+  "turn": 4,
+  "user": "Back to the original charge: repeat its exact amount, currency and reason code, then explain the next step. Do not file anything.",
+  "answer": "The charge is **TX-0401**: **EUR 240.00**, reason code **`goods_not_received`** (TechMart Online, dated 2026-07-20).\n\nI have not filed a dispute. The eligibility check on 2026-09-15 passed, so it can be opened. The filing deadline is **2026-10-18**.\n\n**Next step:** If you want to proceed, tell me and I will open the dispute under this reason code. Once filed, it is reviewed within 10 business days. Foreign-acquirer cases can take up to 45 calendar days, and you would be notified if that applies.",
+  "trace": {
+    "request_id": "11462045fd004bd9",
+    "name": "agent.request",
+    "span_id": "7da44fbf45224792",
+    "started_at": 1792271251.7594533,
+    "ended_at": 1792271254.6655166,
+    "duration_ms": 2906.1,
+    "attributes": {
+      "session.id": "e34b2063e9e6",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5133,
+      "gen_ai.usage.total_output_tokens": 445
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "a7e03ad3fc504426",
+        "started_at": 1792271251.7602,
+        "ended_at": 1792271254.6654894,
+        "duration_ms": 2905.3,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5133,
+          "gen_ai.usage.output_tokens": 445
+        },
+        "children": []
+      }
+    ]
+  }
+}

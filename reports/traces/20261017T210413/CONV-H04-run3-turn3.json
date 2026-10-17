@@ -1,0 +1,140 @@
+{
+  "case": "CONV-H04",
+  "run": 3,
+  "turn": 3,
+  "user": "For this same charge, what evidence of non-delivery should I keep?",
+  "answer": "For TX-0401 (240.00 EUR, TechMart Online, 2026-07-20, goods not received), keep the following:\n\n- **Order confirmation** from TechMart Online, showing the order date, items, and amount paid.\n- **Expected delivery date** and any delivery-tracking information or shipping notice.\n- **Merchant correspondence** about the order, including emails, chat logs, and support tickets, and any replies about non-delivery.\n\nIf the dispute is opened and the review asks for evidence, you must provide it within 7 calendar days, or the case will be declined. It's best to gather these now.\n\nNothing has been filed. The dispute window closes on 2026-10-18, so you have time to decide. When you're ready to proceed, tell me and I'll open the `goods_not_received` dispute.",
+  "trace": {
+    "request_id": "ad1257b6639146be",
+    "name": "agent.request",
+    "span_id": "86bb1d0d3f314598",
+    "started_at": 1792271619.771665,
+    "ended_at": 1792271629.208156,
+    "duration_ms": 9436.5,
+    "attributes": {
+      "session.id": "765f4726189a",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6986,
+      "gen_ai.usage.total_output_tokens": 733
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "85a2c1e385ff4514",
+        "started_at": 1792271619.7718313,
+        "ended_at": 1792271624.4765315,
+        "duration_ms": 4704.7,
+        "attributes": {
+          "summary.text": "**Conversation summary (for support reference)**\n\n**Customer:** CUS-0004, Danylo Kovalenko, tier1\n**Account:** ACC-1005, EUR, balance 1310.20, tier1, holder Danylo Kovalenko\n\n**Disputed transaction:** TX-0401\n- Amount: 240.00 EUR, card payment, direction out, status settled\n- Merchant: TechMart Online\n- Date: 2026-07-20\n- Customer reports: goods never arrived\n\n**Related transactions on ACC-1005 (not under discussion):**\n- TX-0402: 240.00 EUR, TechMart Online, 2026-07-14, settled, card\n- TX-0403: 35.50 EUR, CityParking, 2026-09-01, settled, card\n\n**Dispute eligibility (check run as of 2026-09-15):**\n- Eligible: yes\n- Reason code: `goods_not_received`\n- Window: 90 days from transaction date\n- Deadline: 2026-10-18\n- Checks: reason_code pass, tx_status pass, window pass, compliance_hold pass\n\n**Policy references (kb_clean, disputes.md):**\n- Reason code windows: goods_not_received = 90 days; a dispute opened after the window closes is not eligible.\n- Review target: 10 business days for card reason codes. Complex foreign-acquirer cases may take up to 45 calendar days, and the customer is notified if so.\n\n**Status and commitments:**\n- No dispute has been created or submitted. The customer explicitly asked that nothing be filed.\n- The customer has not yet confirmed they want to proceed.\n- Agent commitment: the agent will open the dispute only after the customer confirms. Eligibility has already been checked, as stated in the earlier turn.",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "3bee3ac6004b4bf6",
+        "started_at": 1792271624.4765768,
+        "ended_at": 1792271625.956159,
+        "duration_ms": 1479.6,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3209,
+          "gen_ai.usage.output_tokens": 217
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "0f68180f6bbf442b",
+        "started_at": 1792271625.9562972,
+        "ended_at": 1792271625.957635,
+        "duration_ms": 1.3,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "goods_not_received dispute evidence required non-delivery"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "goods_not_received dispute evidence required non-delivery",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s5",
+                "doc": "disputes-process.md",
+                "score": 0.8111,
+                "text": "Dispute handling process\n## Evidence requirements\nThe customer may be asked for supporting evidence: an order confirmation, a\ndelivery record, correspondence with the merchant. Failure to supply requested\nevidence within 7 calendar days results in the case being declined."
+              },
+              {
+                "id": "reason-codes.md#s2",
+                "doc": "reason-codes.md",
+                "score": 0.6255,
+                "text": "Reason code guide\n## goods_not_received\nUsed when a purchase was paid for but never delivered. Evidence: the expected\ndelivery date and any merchant correspondence."
+              },
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 0.5303,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              },
+              {
+                "id": "glossary.md#s7",
+                "doc": "glossary.md",
+                "score": 0.4714,
+                "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+              }
+            ]
+          },
+          "retrieval.query": "goods_not_received dispute evidence required non-delivery",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s5",
+              "score": 0.8111,
+              "text": "Dispute handling process\n## Evidence requirements\nThe customer may be asked for supporting evidence: an order confirmation, a\ndelivery record, correspondence wi"
+            },
+            {
+              "id": "reason-codes.md#s2",
+              "score": 0.6255,
+              "text": "Reason code guide\n## goods_not_received\nUsed when a purchase was paid for but never delivered. Evidence: the expected\ndelivery date and any merchant corresponde"
+            },
+            {
+              "id": "disputes-process.md#s6",
+              "score": 0.5303,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            },
+            {
+              "id": "glossary.md#s7",
+              "score": 0.4714,
+              "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "7e1926eb18cc4e1b",
+        "started_at": 1792271625.9578245,
+        "ended_at": 1792271629.2081203,
+        "duration_ms": 3250.3,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3777,
+          "gen_ai.usage.output_tokens": 516
+        },
+        "children": []
+      }
+    ]
+  }
+}

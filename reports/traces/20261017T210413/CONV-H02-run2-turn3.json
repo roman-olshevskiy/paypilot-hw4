@@ -1,0 +1,277 @@
+{
+  "case": "CONV-H02",
+  "run": 2,
+  "turn": 3,
+  "user": "What are my daily card limit and FX spread for USD payments?",
+  "answer": "**Daily card limit:** Your daily transfer limit is EUR 5,000. Card payments count toward it. Nothing has been spent today, so the full EUR 5,000 remains. Your monthly limit is EUR 50,000, with EUR 35.50 used so far, leaving EUR 49,964.50.\n\n**FX spread for USD:** The Tier 1 spread is 1.5% over the mid-market rate. You also have a free monthly conversion allowance of EUR 500. If a whole conversion fits within your remaining allowance, no spread is charged. Once the allowance is used up, the full 1.5% applies. I can't see how much of this month's allowance remains, so I can't say which rate applies to you today. If you tell me an amount, I can run a full quote showing the mid rate, spread, allowance and final USD figure.",
+  "trace": {
+    "request_id": "a710e15a49364604",
+    "name": "agent.request",
+    "span_id": "45f07e2504774e4d",
+    "started_at": 1792271240.191253,
+    "ended_at": 1792271251.7101586,
+    "duration_ms": 11518.9,
+    "attributes": {
+      "session.id": "e34b2063e9e6",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 11838,
+      "gen_ai.usage.total_output_tokens": 1028
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "575cf0d167054d11",
+        "started_at": 1792271240.1914937,
+        "ended_at": 1792271244.469596,
+        "duration_ms": 4278.1,
+        "attributes": {
+          "summary.text": "**Case summary: TX-0401 dispute inquiry (no dispute filed)**\n\n- **Customer:** Danylo Kovalenko, CUS-0004, tier1\n- **Account:** ACC-1005, EUR, balance 1310.20 EUR, tier1\n- **Disputed transaction:** TX-0401, 240.00 EUR, card, outgoing, settled, dated 2026-07-20, merchant TechMart Online\n- **Customer's complaint:** The goods were never received.\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date (per disputes.md, reason-code table)\n- **Eligibility check (as of 2026-09-15):** Eligible. Reason code, transaction status, window, and compliance hold all passed.\n- **Filing deadline:** 2026-10-18\n- **Review target:** 10 business days for card reason codes. Foreign-acquirer cases may take up to 45 calendar days, and the customer is notified if so.\n- **Commitments made:** None beyond the above. No dispute has been created or submitted. The customer asked that only this charge be discussed. The agent offered to proceed only if the customer asks.\n\n**Other records seen (not part of this dispute):**\n- TX-0402: 240.00 EUR, 2026-07-14, TechMart Online, settled. Same merchant and amount as TX-0401. Not raised by the customer; the customer has not asked about it.\n- TX-0403: 35.50 EUR, 2026-09-01, CityParking, settled. Unrelated.",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "b9003e431ff94354",
+        "started_at": 1792271244.4696865,
+        "ended_at": 1792271246.537525,
+        "duration_ms": 2067.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3141,
+          "gen_ai.usage.output_tokens": 319
+        },
+        "children": []
+      },
+      {
+        "name": "tool.get_account",
+        "span_id": "f6c2d0619aea4986",
+        "started_at": 1792271246.5376003,
+        "ended_at": 1792271246.5385668,
+        "duration_ms": 1.0,
+        "attributes": {
+          "tool.name": "get_account",
+          "tool.arguments": {},
+          "tool.result": {
+            "customer": {
+              "id": "CUS-0004",
+              "name": "Danylo Kovalenko",
+              "tier": "tier1"
+            },
+            "accounts": [
+              {
+                "id": "ACC-1005",
+                "customer_id": "CUS-0004",
+                "currency": "EUR",
+                "balance": 1310.2,
+                "tier": "tier1",
+                "holder": "Danylo Kovalenko"
+              }
+            ]
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "9b7c0712d29d44fe",
+        "started_at": 1792271246.538758,
+        "ended_at": 1792271246.539763,
+        "duration_ms": 1.0,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "FX spread USD card payments tier1 daily card limit"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "FX spread USD card payments tier1 daily card limit",
+            "fragments": [
+              {
+                "id": "limits-operations.md#s1",
+                "doc": "limits-operations.md",
+                "score": 0.7809,
+                "text": "Limit operations\n## What counts towards a limit\nOnly settled outgoing transfers count towards the daily and monthly transfer\nlimits. Card payments count. Incoming transfers, internal transfers between the\nown accounts of one customer, and fees charged by Verta do not count."
+              },
+              {
+                "id": "fees-detail.md#s2",
+                "doc": "fees-detail.md",
+                "score": 0.6882,
+                "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+              },
+              {
+                "id": "notifications.md#s3",
+                "doc": "notifications.md",
+                "score": 0.6255,
+                "text": "Notifications\n## Limit warnings\nA notification is sent when a customer has used 80 percent of either the daily\nor the monthly transfer limit."
+              },
+              {
+                "id": "cards.md#s3",
+                "doc": "cards.md",
+                "score": 0.6,
+                "text": "Cards\n## Contactless limits\nContactless payments above EUR 50 require the PIN. The limit is set by the card\nscheme and cannot be changed by Verta."
+              }
+            ]
+          },
+          "retrieval.query": "FX spread USD card payments tier1 daily card limit",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "limits-operations.md#s1",
+              "score": 0.7809,
+              "text": "Limit operations\n## What counts towards a limit\nOnly settled outgoing transfers count towards the daily and monthly transfer\nlimits. Card payments count. Incomi"
+            },
+            {
+              "id": "fees-detail.md#s2",
+              "score": 0.6882,
+              "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+            },
+            {
+              "id": "notifications.md#s3",
+              "score": 0.6255,
+              "text": "Notifications\n## Limit warnings\nA notification is sent when a customer has used 80 percent of either the daily\nor the monthly transfer limit."
+            },
+            {
+              "id": "cards.md#s3",
+              "score": 0.6,
+              "text": "Cards\n## Contactless limits\nContactless payments above EUR 50 require the PIN. The limit is set by the card\nscheme and cannot be changed by Verta."
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "7f4efdf168174c24",
+        "started_at": 1792271246.539835,
+        "ended_at": 1792271248.0227919,
+        "duration_ms": 1483.0,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3878,
+          "gen_ai.usage.output_tokens": 176
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "ae6b536f9a3f4d07",
+        "started_at": 1792271248.0228803,
+        "ended_at": 1792271248.024331,
+        "duration_ms": 1.5,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "f6eb900baa5a438c",
+        "started_at": 1792271248.0244224,
+        "ended_at": 1792271248.026048,
+        "duration_ms": 1.6,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "FX tier spread percentage USD conversion tier1"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "FX tier spread percentage USD conversion tier1",
+            "fragments": [
+              {
+                "id": "tariffs.md#s2",
+                "doc": "tariffs.md",
+                "score": 1.5254,
+                "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tier | FX spread | Free monthly conversion allowance |\n|---|---|---|\n| Tier 1 | 1.5% | EUR 500 |\n| Tier 2 | 0.9% | EUR 1,000 |\n| Tier 3 | 0.5% | EUR 5,000 |"
+              },
+              {
+                "id": "fx-guide.md#s1",
+                "doc": "fx-guide.md",
+                "score": 1.4552,
+                "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier spread (a percentage of the gross converted amount);\nthe free monthly conversion allowance. If the whole conversion fits within the\ncustomer's remaining monthly allowance, no spread is charged. Once the\nallowance is exhausted, the full tier spread applies to the conversion."
+              },
+              {
+                "id": "glossary.md#s2",
+                "doc": "glossary.md",
+                "score": 1.0911,
+                "text": "Glossary\n## Spread\nThe percentage Verta adds to the mid-market rate on a conversion. The spread\ndepends on the customer tier."
+              },
+              {
+                "id": "glossary.md#s6",
+                "doc": "glossary.md",
+                "score": 1.0426,
+                "text": "Glossary\n## Tier\nThe tariff level of a customer: Tier 1, Tier 2 or Tier 3. The tier determines\nspreads, allowances and transfer limits."
+              }
+            ]
+          },
+          "retrieval.query": "FX tier spread percentage USD conversion tier1",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "tariffs.md#s2",
+              "score": 1.5254,
+              "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tie"
+            },
+            {
+              "id": "fx-guide.md#s1",
+              "score": 1.4552,
+              "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier s"
+            },
+            {
+              "id": "glossary.md#s2",
+              "score": 1.0911,
+              "text": "Glossary\n## Spread\nThe percentage Verta adds to the mid-market rate on a conversion. The spread\ndepends on the customer tier."
+            },
+            {
+              "id": "glossary.md#s6",
+              "score": 1.0426,
+              "text": "Glossary\n## Tier\nThe tariff level of a customer: Tier 1, Tier 2 or Tier 3. The tier determines\nspreads, allowances and transfer limits."
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "a1dda66a035a44f2",
+        "started_at": 1792271248.0261805,
+        "ended_at": 1792271251.710085,
+        "duration_ms": 3683.9,
+        "attributes": {
+          "agent.loop_step": 2,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4819,
+          "gen_ai.usage.output_tokens": 533
+        },
+        "children": []
+      }
+    ]
+  }
+}

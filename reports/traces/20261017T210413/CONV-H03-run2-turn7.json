@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 2,
+  "turn": 7,
+  "user": "Explain what a conversion spread means in plain language.",
+  "answer": "A conversion spread is the markup the bank adds to the exchange rate when it converts one currency into another.\n\nThe **mid-market rate** is the midpoint between buying and selling prices in currency markets. The **spread** is an extra percentage added on top of that rate, so you receive slightly less than the market rate would give you. For Verta Tier 1 accounts, the spread is **1.5%** of the converted amount.\n\nFor example, if the mid-market rate were 1 EUR = 1.10 USD and the spread were 1.5%, the effective rate would be about 1.10 × (1 − 0.015) ≈ 1.0835 USD per EUR. That is roughly 1.5% less USD than the market rate gives. The 1.10 figure is only an illustration, not a current rate.\n\nYour spread is charged only after your monthly free conversion allowance (EUR 500 equivalent for Tier 1) is used up. If a conversion crosses that allowance, the spread applies to the whole conversion.",
+  "trace": {
+    "request_id": "f2990222ea694545",
+    "name": "agent.request",
+    "span_id": "9afd933da17848ce",
+    "started_at": 1792271409.0238173,
+    "ended_at": 1792271412.0317204,
+    "duration_ms": 3007.9,
+    "attributes": {
+      "session.id": "6327bd6bb721",
+      "dialog.step_number": 7,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6677,
+      "gen_ai.usage.total_output_tokens": 473
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "f37f2df7a5f5489b",
+        "started_at": 1792271409.0239582,
+        "ended_at": 1792271412.0316947,
+        "duration_ms": 3007.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6677,
+          "gen_ai.usage.output_tokens": 473
+        },
+        "children": []
+      }
+    ]
+  }
+}

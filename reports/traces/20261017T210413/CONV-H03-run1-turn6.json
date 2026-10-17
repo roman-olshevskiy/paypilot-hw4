@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H03",
+  "run": 1,
+  "turn": 6,
+  "user": "What should I check before making an international transfer?",
+  "answer": "Before sending an international (SWIFT) transfer, check these points from the Verta documentation:\n\n1. **Fees:** A SWIFT transfer costs a flat **EUR 15.00** plus **0.3%** of the EUR equivalent of the amount sent. For example, a EUR 1,000 transfer would carry EUR 15.00 + EUR 3.00 = EUR 18.00 in Verta fees.\n2. **Correspondent bank charges:** Intermediary banks may deduct their own charges en route. Verta does not control these and does not refund them.\n3. **Currency conversion:** If you send in a currency other than EUR, the FX spread may apply. For Tier 1 it is 1.5%, but only after your EUR 500 monthly free conversion allowance is used up. I can run a quote for a specific amount.\n4. **Transfer limits:** Your current limits are EUR 5,000.00 daily and EUR 50,000.00 monthly, with EUR 0.00 used today and EUR 35.50 used this month. Verta fees do not count toward these limits.\n5. **Rejected transfers:** If the beneficiary bank rejects the transfer, it is returned within five business days. Fees already charged on a returned SWIFT transfer are not refunded.\n\nI can check the exact figures for a planned amount or send you a quote. For anything else about a specific transfer, I can escalate to a human agent.",
+  "trace": {
+    "request_id": "6a1a029c12544658",
+    "name": "agent.request",
+    "span_id": "3c8c21f5213d4df1",
+    "started_at": 1792271357.9662333,
+    "ended_at": 1792271363.1874025,
+    "duration_ms": 5221.2,
+    "attributes": {
+      "session.id": "27b7063b380a",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 12108,
+      "gen_ai.usage.total_output_tokens": 819
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "bc9e58097a714832",
+        "started_at": 1792271357.9664013,
+        "ended_at": 1792271359.5415154,
+        "duration_ms": 1575.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5714,
+          "gen_ai.usage.output_tokens": 164
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "b21a51f31caa4efa",
+        "started_at": 1792271359.541672,
+        "ended_at": 1792271359.5442185,
+        "duration_ms": 2.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "international SWIFT transfer checklist before sending fees limits correspondent charges"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "international SWIFT transfer checklist before sending fees limits correspondent charges",
+            "fragments": [
+              {
+                "id": "fees-detail.md#s5",
+                "doc": "fees-detail.md",
+                "score": 1.1471,
+                "text": "Fee details\n## Fees and limits\nFees charged by Verta do not count towards the transfer limits of the customer."
+              },
+              {
+                "id": "fees-detail.md#s1",
+                "doc": "fees-detail.md",
+                "score": 0.7715,
+                "text": "Fee details\n## How the SWIFT fee is composed\nA SWIFT transfer carries a flat fee plus a percentage of the EUR equivalent of\nthe amount sent. Correspondent bank charges deducted en route are outside the\ncontrol of Verta and are not refunded."
+              },
+              {
+                "id": "transfers.md#s4",
+                "doc": "transfers.md",
+                "score": 0.7698,
+                "text": "Transfers\n## Failed transfers\nA transfer rejected by the beneficiary bank is returned within five business\ndays. Fees already charged on a returned SWIFT transfer are not refunded."
+              },
+              {
+                "id": "tariffs.md#s3",
+                "doc": "tariffs.md",
+                "score": 0.7143,
+                "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |\n| SWIFT | EUR 15.00 | 0.3% |\n| Card payment | EUR 0.00 | 1.2% |\n\nThe percentage fee is calculated on the EUR equivalent of the transfer amount."
+              }
+            ]
+          },
+          "retrieval.query": "international SWIFT transfer checklist before sending fees limits correspondent charges",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "fees-detail.md#s5",
+              "score": 1.1471,
+              "text": "Fee details\n## Fees and limits\nFees charged by Verta do not count towards the transfer limits of the customer."
+            },
+            {
+              "id": "fees-detail.md#s1",
+              "score": 0.7715,
+              "text": "Fee details\n## How the SWIFT fee is composed\nA SWIFT transfer carries a flat fee plus a percentage of the EUR equivalent of\nthe amount sent. Correspondent bank "
+            },
+            {
+              "id": "transfers.md#s4",
+              "score": 0.7698,
+              "text": "Transfers\n## Failed transfers\nA transfer rejected by the beneficiary bank is returned within five business\ndays. Fees already charged on a returned SWIFT transf"
+            },
+            {
+              "id": "tariffs.md#s3",
+              "score": 0.7143,
+              "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "4157934a551c481a",
+        "started_at": 1792271359.5443835,
+        "ended_at": 1792271363.1873388,
+        "duration_ms": 3643.0,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6394,
+          "gen_ai.usage.output_tokens": 655
+        },
+        "children": []
+      }
+    ]
+  }
+}

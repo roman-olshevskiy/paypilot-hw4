@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H03",
+  "run": 4,
+  "turn": 6,
+  "user": "What should I check before making an international transfer?",
+  "answer": "Before sending an international (SWIFT) transfer, check these:\n\n1. **Fees:** A SWIFT transfer costs a **EUR 15.00 flat fee plus 0.3%** of the EUR equivalent. For example, a EUR 1,000 transfer costs EUR 15.00 + EUR 3.00 = EUR 18.00 in fees.\n2. **Currency conversion:** If the transfer is in a currency other than EUR, the FX spread for your tier (1.5% for Tier 1) applies once your EUR 500 monthly free conversion allowance is used up.\n3. **Limits:** Settled outgoing transfers count toward your daily limit (EUR 5,000) and monthly limit (EUR 50,000). Verta's fees do not count. Your current remaining amounts are in the limits check I ran earlier.\n4. **Returned transfers:** If the beneficiary bank rejects the transfer, it is returned within five business days, but the fees already charged are not refunded. Confirm the beneficiary details before sending.\n\nI can run a full FX quote for a specific amount and currency if you tell me what you plan to send.",
+  "trace": {
+    "request_id": "9e1eb9a949034db6",
+    "name": "agent.request",
+    "span_id": "d81109930ee9496e",
+    "started_at": 1792271493.366958,
+    "ended_at": 1792271498.258471,
+    "duration_ms": 4891.5,
+    "attributes": {
+      "session.id": "2a957863a6df",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 11336,
+      "gen_ai.usage.total_output_tokens": 656
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "58b83673c6e7425c",
+        "started_at": 1792271493.367133,
+        "ended_at": 1792271494.8746603,
+        "duration_ms": 1507.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5275,
+          "gen_ai.usage.output_tokens": 161
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "ed4a5cade20c4e16",
+        "started_at": 1792271494.8747246,
+        "ended_at": 1792271494.8755898,
+        "duration_ms": 0.9,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "international SWIFT transfer checks before sending limits fees"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "international SWIFT transfer checks before sending limits fees",
+            "fragments": [
+              {
+                "id": "fees-detail.md#s5",
+                "doc": "fees-detail.md",
+                "score": 1.1471,
+                "text": "Fee details\n## Fees and limits\nFees charged by Verta do not count towards the transfer limits of the customer."
+              },
+              {
+                "id": "transfers.md#s4",
+                "doc": "transfers.md",
+                "score": 0.7698,
+                "text": "Transfers\n## Failed transfers\nA transfer rejected by the beneficiary bank is returned within five business\ndays. Fees already charged on a returned SWIFT transfer are not refunded."
+              },
+              {
+                "id": "tariffs.md#s3",
+                "doc": "tariffs.md",
+                "score": 0.7143,
+                "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |\n| SWIFT | EUR 15.00 | 0.3% |\n| Card payment | EUR 0.00 | 1.2% |\n\nThe percentage fee is calculated on the EUR equivalent of the transfer amount."
+              },
+              {
+                "id": "limits.md#s1",
+                "doc": "limits.md",
+                "score": 0.5774,
+                "text": "Transfer limits\n## Daily and monthly limits by tier\nOutgoing transfer limits are tracked in EUR equivalent, separately per day and\nper calendar month. The daily and the monthly remainder are different numbers:\nboth are computed from the same settled-transactions source, but over\ndifferent windows.\n\n| Tier | Daily limit | Monthly limit |\n|---|---|---|\n| Tier 1 | EUR 5,000 | EUR 50,000 |\n| Tier 2 | EUR 20,000 | EUR 200,000 |\n| Tier 3 | EUR 100,000 | EUR 1,000,000 |"
+              }
+            ]
+          },
+          "retrieval.query": "international SWIFT transfer checks before sending limits fees",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "fees-detail.md#s5",
+              "score": 1.1471,
+              "text": "Fee details\n## Fees and limits\nFees charged by Verta do not count towards the transfer limits of the customer."
+            },
+            {
+              "id": "transfers.md#s4",
+              "score": 0.7698,
+              "text": "Transfers\n## Failed transfers\nA transfer rejected by the beneficiary bank is returned within five business\ndays. Fees already charged on a returned SWIFT transf"
+            },
+            {
+              "id": "tariffs.md#s3",
+              "score": 0.7143,
+              "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |"
+            },
+            {
+              "id": "limits.md#s1",
+              "score": 0.5774,
+              "text": "Transfer limits\n## Daily and monthly limits by tier\nOutgoing transfer limits are tracked in EUR equivalent, separately per day and\nper calendar month. The daily"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "8fb0993151b241e3",
+        "started_at": 1792271494.8756745,
+        "ended_at": 1792271498.2583685,
+        "duration_ms": 3382.7,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6061,
+          "gen_ai.usage.output_tokens": 495
+        },
+        "children": []
+      }
+    ]
+  }
+}

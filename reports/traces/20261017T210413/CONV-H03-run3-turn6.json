@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H03",
+  "run": 3,
+  "turn": 6,
+  "user": "What should I check before making an international transfer?",
+  "answer": "Before sending an international (SWIFT) transfer, check these points:\n\n1. **Fees:** A SWIFT transfer has a flat fee of **EUR 15.00** plus **0.3%** of the EUR equivalent of the amount.\n2. **Currency conversion:** If the payment currency differs from your EUR account currency, the conversion is applied at settlement. The Tier 1 spread is 1.5% over the mid-market rate, and it applies only after the EUR 500 monthly conversion allowance is used up.\n3. **Timing:** SWIFT transfers take 1 to 5 business days to settle. Transfers submitted after 14:00 CET are processed the next business day.\n4. **Limits:** Your daily limit is EUR 5,000.00, with EUR 5,000.00 remaining as of 2026-09-15. Your monthly limit is EUR 50,000.00, with EUR 49,964.50 remaining.\n5. **Returns:** If the beneficiary bank rejects the transfer, it is returned within 5 business days. Fees already charged on a returned SWIFT transfer are not refunded.\n\nI also need to correct my earlier answer about card payments. The tariff schedule lists a **1.2%** percentage fee on card payments, calculated on the EUR equivalent, with no flat fee. I was wrong to say the knowledge base did not give that figure. For SEPA transfers, the flat fee is **EUR 0.35** with no percentage fee. I was also wrong to say that figure was missing.\n\nIf you tell me the amount and currency, I can run an FX quote or check the limits against it.",
+  "trace": {
+    "request_id": "0c2f5337a15f4fbe",
+    "name": "agent.request",
+    "span_id": "ce2a40d1a9b14ab9",
+    "started_at": 1792271449.7366545,
+    "ended_at": 1792271455.0260236,
+    "duration_ms": 5289.4,
+    "attributes": {
+      "session.id": "ce57b273ae18",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 11808,
+      "gen_ai.usage.total_output_tokens": 889
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "46ac81fdde104d31",
+        "started_at": 1792271449.736792,
+        "ended_at": 1792271450.8740375,
+        "duration_ms": 1137.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5574,
+          "gen_ai.usage.output_tokens": 96
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "ca40f325e1f84c6a",
+        "started_at": 1792271450.87412,
+        "ended_at": 1792271450.8760326,
+        "duration_ms": 1.9,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "international transfer SWIFT checklist before sending limits fees cut-off"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "international transfer SWIFT checklist before sending limits fees cut-off",
+            "fragments": [
+              {
+                "id": "fees-detail.md#s5",
+                "doc": "fees-detail.md",
+                "score": 1.1471,
+                "text": "Fee details\n## Fees and limits\nFees charged by Verta do not count towards the transfer limits of the customer."
+              },
+              {
+                "id": "transfers.md#s2",
+                "doc": "transfers.md",
+                "score": 0.8333,
+                "text": "Transfers\n## Cut-off times\nSEPA transfers submitted after 16:00 CET are processed the next business day.\nSWIFT transfers submitted after 14:00 CET are processed the next business day.\nInternal transfers have no cut-off."
+              },
+              {
+                "id": "transfers.md#s4",
+                "doc": "transfers.md",
+                "score": 0.7698,
+                "text": "Transfers\n## Failed transfers\nA transfer rejected by the beneficiary bank is returned within five business\ndays. Fees already charged on a returned SWIFT transfer are not refunded."
+              },
+              {
+                "id": "tariffs.md#s3",
+                "doc": "tariffs.md",
+                "score": 0.7143,
+                "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |\n| SWIFT | EUR 15.00 | 0.3% |\n| Card payment | EUR 0.00 | 1.2% |\n\nThe percentage fee is calculated on the EUR equivalent of the transfer amount."
+              }
+            ]
+          },
+          "retrieval.query": "international transfer SWIFT checklist before sending limits fees cut-off",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "fees-detail.md#s5",
+              "score": 1.1471,
+              "text": "Fee details\n## Fees and limits\nFees charged by Verta do not count towards the transfer limits of the customer."
+            },
+            {
+              "id": "transfers.md#s2",
+              "score": 0.8333,
+              "text": "Transfers\n## Cut-off times\nSEPA transfers submitted after 16:00 CET are processed the next business day.\nSWIFT transfers submitted after 14:00 CET are processed"
+            },
+            {
+              "id": "transfers.md#s4",
+              "score": 0.7698,
+              "text": "Transfers\n## Failed transfers\nA transfer rejected by the beneficiary bank is returned within five business\ndays. Fees already charged on a returned SWIFT transf"
+            },
+            {
+              "id": "tariffs.md#s3",
+              "score": 0.7143,
+              "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "6dcabbbcfc914764",
+        "started_at": 1792271450.8761883,
+        "ended_at": 1792271455.0259583,
+        "duration_ms": 4149.8,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6234,
+          "gen_ai.usage.output_tokens": 793
+        },
+        "children": []
+      }
+    ]
+  }
+}

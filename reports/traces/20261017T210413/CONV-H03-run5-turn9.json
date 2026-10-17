@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 5,
+  "turn": 9,
+  "user": "The amount is 240 euro, as I said at the start.",
+  "answer": "Thank you, that matches both TechMart charges. TX-0401 (2026-07-20) and TX-0402 (2026-07-14) are each EUR 240.00 to TechMart Online, so the amount alone doesn't show which one you mean.\n\nPlease confirm which charge you want to dispute:\n- **TX-0401**, dated 2026-07-20. This is the charge the dispute eligibility check was run on.\n- **TX-0402**, dated 2026-07-14. This would need its own eligibility check before anything is filed.\n\nNothing has been filed. Once you confirm, I will re-verify eligibility for that transaction before opening any dispute.",
+  "trace": {
+    "request_id": "116dc2e9190f42b9",
+    "name": "agent.request",
+    "span_id": "5adad8d249114a20",
+    "started_at": 1792271544.0455132,
+    "ended_at": 1792271546.5408766,
+    "duration_ms": 2495.4,
+    "attributes": {
+      "session.id": "38d2e5adf957",
+      "dialog.step_number": 9,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6928,
+      "gen_ai.usage.total_output_tokens": 355
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "37ca2c383ff241de",
+        "started_at": 1792271544.0456405,
+        "ended_at": 1792271546.5408592,
+        "duration_ms": 2495.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6928,
+          "gen_ai.usage.output_tokens": 355
+        },
+        "children": []
+      }
+    ]
+  }
+}

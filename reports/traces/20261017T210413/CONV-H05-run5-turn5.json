@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H05",
+  "run": 5,
+  "turn": 5,
+  "user": "Back to the original charge: repeat its exact amount, currency and reason code, then explain the next step. Do not file anything.",
+  "answer": "**Transaction TX-0401**\n- **Amount:** 240.00 EUR\n- **Currency:** EUR\n- **Reason code:** `goods_not_received`\n\nDispute eligibility was checked on 2026-09-15 and passed. The filing deadline is 2026-10-18. No dispute has been filed.\n\n**Next step:** If you confirm you want to proceed, I will open the dispute for TX-0401 under `goods_not_received` for 240.00 EUR. Once it is filed, it cannot be reversed. Tell me when you're ready and I'll file it.",
+  "trace": {
+    "request_id": "172a65cd10474157",
+    "name": "agent.request",
+    "span_id": "5f2a51bb28264cb6",
+    "started_at": 1792271891.4146137,
+    "ended_at": 1792271893.8546772,
+    "duration_ms": 2440.1,
+    "attributes": {
+      "session.id": "d53b08cab45b",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4576,
+      "gen_ai.usage.total_output_tokens": 417
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "24e22389267941e6",
+        "started_at": 1792271891.4148445,
+        "ended_at": 1792271893.8546197,
+        "duration_ms": 2439.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4576,
+          "gen_ai.usage.output_tokens": 417
+        },
+        "children": []
+      }
+    ]
+  }
+}

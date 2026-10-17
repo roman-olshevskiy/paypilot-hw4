@@ -32,6 +32,34 @@ def amount_present(text):
     return bool(re.search(r"(?<![0-9])240(?:[.,]00)?(?![0-9])",text or ""))
 
 
+def inventories(part):
+    # Reconstruct only an entity inventory from recorded values, not raw messages.
+    history=[]
+    output=[]
+    for row in part:
+        summaries=[s for s in spans(row["trace"]) if s.get("name")=="agent.summarize"]
+        if summaries:
+            history=[summaries[-1].get("attributes",{}).get("summary.text","")]
+        incoming=history+[row["question"]]
+        text=chr(10).join(incoming)
+        codes=sorted(set(re.findall(
+            r"fraud_card_not_present|goods_not_received|duplicate_charge|service_not_rendered|unauthorized_debit",
+            text,re.I)))
+        output.append({"turn":row["turn"],
+                       "amount_240_in_recorded_input_sources":amount_present(text),
+                       "reason_literals_in_recorded_input_sources":codes,
+                       "summarized_now":bool(summaries),
+                       "source":"Actual summary plus prior recorded user/assistant/tool values, using verified loop replacement semantics; not a raw provider-message snapshot"})
+        history.append(row["question"])
+        history.append(row["response"]["answer"])
+        for sp in spans(row["trace"]):
+            attrs=sp.get("attributes",{})
+            if sp.get("name","").startswith("tool."):
+                history.append(json.dumps(attrs.get("tool.arguments",{}),ensure_ascii=False))
+                history.append(json.dumps(attrs.get("tool.result",{}),ensure_ascii=False))
+    return output
+
+
 def main():
     compiled={c["id"]:c for c in loader.load(ROOT/"l05_dialogs.jsonl")}
     runs=[]
@@ -79,6 +107,7 @@ def main():
                 "oracle_failures":oracle_failed,
                 "first_summary_without_amount_turn":min(evidence_loss) if evidence_loss else None,
                 "summary_evidence":observed_summary,
+                "derived_input_entity_inventory":inventories(part),
                 "chat_requests":len(part),
                 "request_ids":[row["response"]["request_id"] for row in part]})
         cost=sum(row["response"]["usage"].get("cost_usd") or 0 for row in rows)

@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H04",
+  "run": 1,
+  "turn": 6,
+  "user": "The amount is 240 euro, as I said at the start.",
+  "answer": "Yes, TX-0401 is 240.00 EUR, as you said. I have not filed anything.\n\nTX-0402 is also 240.00 EUR to TechMart Online, dated 2026-07-14. If the non-delivery applies to the 2026-07-20 charge (TX-0401), that is the one to dispute. If it applies to the 2026-07-14 charge (TX-0402), tell me and I will check that one instead.",
+  "trace": {
+    "request_id": "3fd2cb912e714d39",
+    "name": "agent.request",
+    "span_id": "aa420a747d5542d0",
+    "started_at": 1792271574.3546348,
+    "ended_at": 1792271576.6869369,
+    "duration_ms": 2332.3,
+    "attributes": {
+      "session.id": "a225b32dd486",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5203,
+      "gen_ai.usage.total_output_tokens": 330
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "eb439af846474128",
+        "started_at": 1792271574.354878,
+        "ended_at": 1792271576.68691,
+        "duration_ms": 2332.0,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5203,
+          "gen_ai.usage.output_tokens": 330
+        },
+        "children": []
+      }
+    ]
+  }
+}

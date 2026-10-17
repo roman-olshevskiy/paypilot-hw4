@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 4,
+  "turn": 7,
+  "user": "Explain what a conversion spread means in plain language.",
+  "answer": "A conversion spread is the margin the bank adds to the exchange rate when it changes one currency into another.\n\nExchange rates have a \"mid-market\" rate, the midpoint between buying and selling prices on the open market. The bank doesn't give you that rate. It adds a small markup, the spread, so you receive slightly less than the mid rate when converting.\n\nFor example, if the mid rate is 1 EUR = 1.10 USD and the spread is 1.5%, the bank's rate is about 1.5% worse, around 1.083 USD per EUR. Converting EUR 1,000 would give roughly USD 1,083 instead of USD 1,100.\n\nAt Verta, the spread applies only after your monthly free conversion allowance is used up. On Tier 1 that allowance is EUR 500 per month. Conversions within it carry no spread.",
+  "trace": {
+    "request_id": "60dd94339245435f",
+    "name": "agent.request",
+    "span_id": "e75b77cc3e9b4593",
+    "started_at": 1792271498.313369,
+    "ended_at": 1792271500.8622806,
+    "duration_ms": 2548.9,
+    "attributes": {
+      "session.id": "2a957863a6df",
+      "dialog.step_number": 7,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6455,
+      "gen_ai.usage.total_output_tokens": 337
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "c6f5c9ed43bd4cd4",
+        "started_at": 1792271498.313524,
+        "ended_at": 1792271500.862233,
+        "duration_ms": 2548.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6455,
+          "gen_ai.usage.output_tokens": 337
+        },
+        "children": []
+      }
+    ]
+  }
+}

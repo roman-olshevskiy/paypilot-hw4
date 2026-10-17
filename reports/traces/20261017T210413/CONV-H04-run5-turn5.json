@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H04",
+  "run": 5,
+  "turn": 5,
+  "user": "Back to the original charge: repeat its exact amount, currency and reason code, then explain the next step. Do not file anything.",
+  "answer": "The charge is **240.00 EUR** (TX-0401, TechMart Online, 2026-07-20), and the reason code is **goods_not_received**.\n\nNo dispute has been opened. The next step is yours. If you want to proceed, I'll run the eligibility check again, since the last one was done on 2026-09-15, and confirm the details with you before anything is submitted. The dispute window closes on 2026-10-18.\n\nThe case summary I was given is cut off at \"The agent offered to,\" so I can't tell what was offered earlier. Please tell me if you need that point clarified.",
+  "trace": {
+    "request_id": "66b48201f8c14ce2",
+    "name": "agent.request",
+    "span_id": "abdafe812c42444d",
+    "started_at": 1792271699.4277942,
+    "ended_at": 1792271702.5105417,
+    "duration_ms": 3082.7,
+    "attributes": {
+      "session.id": "15a69d77f43c",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4917,
+      "gen_ai.usage.total_output_tokens": 466
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "38591d9607a04d72",
+        "started_at": 1792271699.428004,
+        "ended_at": 1792271702.5105023,
+        "duration_ms": 3082.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4917,
+          "gen_ai.usage.output_tokens": 466
+        },
+        "children": []
+      }
+    ]
+  }
+}

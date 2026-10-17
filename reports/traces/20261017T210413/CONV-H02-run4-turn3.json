@@ -1,0 +1,164 @@
+{
+  "case": "CONV-H02",
+  "run": 4,
+  "turn": 3,
+  "user": "What are my daily card limit and FX spread for USD payments?",
+  "answer": "**Daily card limit:** EUR 5,000. As of 2026-09-15 you have spent EUR 0 today, so the full EUR 5,000 remains. Your monthly limit is EUR 50,000, with EUR 49,964.50 remaining.\n\n**FX spread (Tier 1):**\n- Spread: 1.5% of the gross converted amount, applied only once your free monthly conversion allowance is used up.\n- Free monthly conversion allowance: EUR 500. If a conversion fits within your remaining allowance, no spread is charged.\n\nI can't see how much of your EUR 500 allowance you have used this month, so I can't say whether a USD conversion would currently be free. The knowledge base doesn't give a USD-specific rate, so I can't quote one from documents alone. I can run a full quote showing the mid rate, spread, allowance used, and final amount for a specific EUR amount if you tell me how much you want to convert.\n\nCard payments also carry a percentage fee on the EUR equivalent, but the documentation I can access doesn't state that percentage, so I can't give you that figure.",
+  "trace": {
+    "request_id": "30b1c959b8974ab6",
+    "name": "agent.request",
+    "span_id": "724a1fe742bd4878",
+    "started_at": 1792271289.6704366,
+    "ended_at": 1792271300.3293111,
+    "duration_ms": 10658.9,
+    "attributes": {
+      "session.id": "c080745d8948",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7296,
+      "gen_ai.usage.total_output_tokens": 971
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "229d979fae3a492f",
+        "started_at": 1792271289.6706965,
+        "ended_at": 1792271293.8170576,
+        "duration_ms": 4146.4,
+        "attributes": {
+          "summary.text": "**Conversation summary (CUS-0004, Danylo Kovalenko, tier1)**\n\n**Customer and account**\n- Customer ID: CUS-0004 (Danylo Kovalenko, tier1)\n- Account: ACC-1005, EUR, balance 1310.20 EUR\n\n**Disputed transaction**\n- TX-0401: 240.00 EUR card payment to TechMart Online, dated 2026-07-20, direction out, status settled.\n- Customer reports the goods were never received.\n- Applicable reason code: `goods_not_received`.\n- Filing window: 90 days from the transaction date (per disputes.md#s1). Eligibility check (as_of 2026-09-15) returned deadline 2026-10-18.\n- Eligibility checks all passed: reason_code, tx_status, window, compliance_hold.\n- Review timeline (disputes-process.md#s4): 10 business days for card reason codes. Complex cases with a foreign acquirer may take up to 45 calendar days, and the customer is notified if so.\n\n**Other transactions on ACC-1005 (not part of the dispute)**\n- TX-0402: 240.00 EUR, TechMart Online, 2026-07-14, settled. Same merchant and amount as TX-0401, noted for reference only. Not addressed in the conversation.\n- TX-0403: 35.50 EUR, CityParking, 2026-09-01, settled.\n\n**Commitments and actions**\n- The customer asked for no dispute to be created or submitted. None has been filed.\n- The agent offered to open the dispute if the customer asks. No commitment beyond that offer.",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "e89af3225af94595",
+        "started_at": 1792271293.8171656,
+        "ended_at": 1792271296.0148904,
+        "duration_ms": 2197.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3157,
+          "gen_ai.usage.output_tokens": 336
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "5dd810d17d48493a",
+        "started_at": 1792271296.015199,
+        "ended_at": 1792271296.0176795,
+        "duration_ms": 2.5,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "1cea745c757d4870",
+        "started_at": 1792271296.0179667,
+        "ended_at": 1792271296.0192547,
+        "duration_ms": 1.3,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "FX spread USD card payments tier1 conversion fee"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "FX spread USD card payments tier1 conversion fee",
+            "fragments": [
+              {
+                "id": "fees-detail.md#s2",
+                "doc": "fees-detail.md",
+                "score": 1.6059,
+                "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+              },
+              {
+                "id": "fx-guide.md#s1",
+                "doc": "fx-guide.md",
+                "score": 1.0914,
+                "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier spread (a percentage of the gross converted amount);\nthe free monthly conversion allowance. If the whole conversion fits within the\ncustomer's remaining monthly allowance, no spread is charged. Once the\nallowance is exhausted, the full tier spread applies to the conversion."
+              },
+              {
+                "id": "tariffs.md#s2",
+                "doc": "tariffs.md",
+                "score": 0.8321,
+                "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tier | FX spread | Free monthly conversion allowance |\n|---|---|---|\n| Tier 1 | 1.5% | EUR 500 |\n| Tier 2 | 0.9% | EUR 1,000 |\n| Tier 3 | 0.5% | EUR 5,000 |"
+              },
+              {
+                "id": "fx-guide.md#s2",
+                "doc": "fx-guide.md",
+                "score": 0.7538,
+                "text": "Currency conversion guide\n## Reading a quote\nA complete quote lists: mid rate, spread percentage applied, allowance total\nand allowance used before this conversion, gross converted amount, spread\namount, and the final credited amount. The final amount equals the gross\namount minus the spread amount."
+              }
+            ]
+          },
+          "retrieval.query": "FX spread USD card payments tier1 conversion fee",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "fees-detail.md#s2",
+              "score": 1.6059,
+              "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+            },
+            {
+              "id": "fx-guide.md#s1",
+              "score": 1.0914,
+              "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier s"
+            },
+            {
+              "id": "tariffs.md#s2",
+              "score": 0.8321,
+              "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tie"
+            },
+            {
+              "id": "fx-guide.md#s2",
+              "score": 0.7538,
+              "text": "Currency conversion guide\n## Reading a quote\nA complete quote lists: mid rate, spread percentage applied, allowance total\nand allowance used before this convers"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "de69aaa755204c66",
+        "started_at": 1792271296.0194037,
+        "ended_at": 1792271300.3292851,
+        "duration_ms": 4309.9,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4139,
+          "gen_ai.usage.output_tokens": 635
+        },
+        "children": []
+      }
+    ]
+  }
+}

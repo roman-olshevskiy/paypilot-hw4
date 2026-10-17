@@ -1,0 +1,157 @@
+{
+  "case": "CONV-H05",
+  "run": 5,
+  "turn": 2,
+  "user": "Can I dispute that charge? State the applicable reason code and filing window in days; do not file anything.",
+  "answer": "Yes, TX-0401 is eligible for a dispute. I have not filed anything.\n\n- **Reason code:** `goods_not_received`\n- **Filing window:** 90 days from the transaction date of 2026-07-20\n- **Deadline:** 2026-10-18 (per the eligibility check, which is as of 2026-09-15)\n\nAll eligibility checks passed: reason code, transaction status, window, and compliance hold. If you want to proceed, I can open the dispute when you confirm.",
+  "trace": {
+    "request_id": "265d72546deb49e3",
+    "name": "agent.request",
+    "span_id": "75cfeb8e364f4a1c",
+    "started_at": 1792271876.517233,
+    "ended_at": 1792271880.0367022,
+    "duration_ms": 3519.5,
+    "attributes": {
+      "session.id": "d53b08cab45b",
+      "dialog.step_number": 2,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7683,
+      "gen_ai.usage.total_output_tokens": 488
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "255421bbc2e345bb",
+        "started_at": 1792271876.5174294,
+        "ended_at": 1792271878.189884,
+        "duration_ms": 1672.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3403,
+          "gen_ai.usage.output_tokens": 238
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_dispute_eligibility",
+        "span_id": "d018d96f32434556",
+        "started_at": 1792271878.1900282,
+        "ended_at": 1792271878.1929502,
+        "duration_ms": 2.9,
+        "attributes": {
+          "tool.name": "check_dispute_eligibility",
+          "tool.arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "goods_not_received"
+          },
+          "tool.result": {
+            "eligible": true,
+            "reason_code": "goods_not_received",
+            "window_days": 90,
+            "tx_date": "2026-07-20",
+            "as_of": "2026-09-15",
+            "deadline": "2026-10-18",
+            "checks": {
+              "reason_code": "pass",
+              "tx_status": "pass",
+              "window": "pass",
+              "compliance_hold": "pass"
+            }
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "9d68d525ea274363",
+        "started_at": 1792271878.193097,
+        "ended_at": 1792271878.1945865,
+        "duration_ms": 1.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute filing window days goods_not_received card transaction"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute filing window days goods_not_received card transaction",
+            "fragments": [
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 1.3568,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "glossary.md#s3",
+                "doc": "glossary.md",
+                "score": 0.8165,
+                "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+              },
+              {
+                "id": "limits-operations.md#s5",
+                "doc": "limits-operations.md",
+                "score": 0.8165,
+                "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+              },
+              {
+                "id": "security-policy.md#s2",
+                "doc": "security-policy.md",
+                "score": 0.7845,
+                "text": "Customer security policy\n## Card blocking\nA customer may block a card immediately. Blocking is reversible for 30 days;\nafter that a replacement card must be ordered."
+              }
+            ]
+          },
+          "retrieval.query": "dispute filing window days goods_not_received card transaction",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes.md#s1",
+              "score": 1.3568,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach reason code has a window in days from the transaction date. A dispute opened after the window "
+            },
+            {
+              "id": "glossary.md#s3",
+              "score": 0.8165,
+              "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+            },
+            {
+              "id": "limits-operations.md#s5",
+              "score": 0.8165,
+              "text": "Limit operations\n## Window definition\nLimits are tracked on calendar days, not business days. The daily window runs\nfrom 00:00 to 23:59 CET."
+            },
+            {
+              "id": "security-policy.md#s2",
+              "score": 0.7845,
+              "text": "Customer security policy\n## Card blocking\nA customer may block a card immediately. Blocking is reversible for 30 days;\nafter that a replacement card must be ord"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "e6359c66e317492e",
+        "started_at": 1792271878.1947026,
+        "ended_at": 1792271880.036648,
+        "duration_ms": 1841.9,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4280,
+          "gen_ai.usage.output_tokens": 250
+        },
+        "children": []
+      }
+    ]
+  }
+}

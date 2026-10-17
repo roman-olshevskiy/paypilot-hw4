@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H05",
+  "run": 3,
+  "turn": 5,
+  "user": "Back to the original charge: repeat its exact amount, currency and reason code, then explain the next step. Do not file anything.",
+  "answer": "The charge is:\n- **Transaction:** TX-0401\n- **Amount:** 240.00 EUR\n- **Reason code:** `goods_not_received`\n\nNo dispute has been filed. The next step is for you to confirm that you want to dispute this charge. I would then re-check eligibility, since the last check was run as of 2026-09-15, and open the dispute for the full 240.00 EUR. The filing window closes on 2026-10-18.\n\nOnce filed, the standard review target for card disputes is 10 business days. Complex cases with a foreign acquirer can take up to 45 calendar days, and you would be notified during that time.",
+  "trace": {
+    "request_id": "5e5f6481fd534928",
+    "name": "agent.request",
+    "span_id": "3d25f108002b4a42",
+    "started_at": 1792271814.2993612,
+    "ended_at": 1792271817.1896331,
+    "duration_ms": 2890.3,
+    "attributes": {
+      "session.id": "724b0ccc1894",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4534,
+      "gen_ai.usage.total_output_tokens": 495
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "b0fe8a05b92544e7",
+        "started_at": 1792271814.2996836,
+        "ended_at": 1792271817.1895988,
+        "duration_ms": 2889.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4534,
+          "gen_ai.usage.output_tokens": 495
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 3,
+  "turn": 9,
+  "user": "The amount is 240 euro, as I said at the start.",
+  "answer": "Thanks, that matches. TX-0401 is a 240.00 EUR card payment to TechMart Online on 2026-07-20.\n\nNothing has been filed. Before I open a dispute, I still need you to confirm that TX-0401 is the charge for the goods that never arrived, and not TX-0402 (240.00 EUR to TechMart Online on 2026-07-14). Once you confirm, I'll run a fresh eligibility check and file only if it passes.",
+  "trace": {
+    "request_id": "3f7b5838493644cc",
+    "name": "agent.request",
+    "span_id": "29fd655e8a5c4e03",
+    "started_at": 1792271461.8168805,
+    "ended_at": 1792271463.9776902,
+    "duration_ms": 2160.8,
+    "attributes": {
+      "session.id": "ce57b273ae18",
+      "dialog.step_number": 9,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7567,
+      "gen_ai.usage.total_output_tokens": 271
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "398eeafaba4d4b84",
+        "started_at": 1792271461.8170147,
+        "ended_at": 1792271463.9776576,
+        "duration_ms": 2160.6,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 7567,
+          "gen_ai.usage.output_tokens": 271
+        },
+        "children": []
+      }
+    ]
+  }
+}

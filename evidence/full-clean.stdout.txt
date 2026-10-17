@@ -1,0 +1,218 @@
+ Container paypilot-l05-eval-eval-run-02c009fe01e7 Creating 
+ Container paypilot-l05-eval-eval-run-02c009fe01e7 Created 
+set l05_dialogs (5 cases)  profile clean  prompt base.v1  gate release
+------------------------------------------------------------------------
+PASS  CONV-H01   L4 memory      dialog  30.3s, 263800 tokens over 5 runs, last run shown
+      turn 1    U: Transaction TX-0401, 240.00 EUR: the goods never arrived. Confirm its amount and
+                currency and name the single applicable reason code. We are only discussing this …
+                A: Transaction TX-0401 is confirmed as 240.00 EUR, a card payment to TechMart Online
+                on 2026-07-20, status settled. The applicable reason code for goods that never …
+      turn 2    U: Can I dispute that charge? State the applicable reason code and filing window in
+                days; do not file anything.
+                A: Yes, TX-0401 (240.00 EUR, TechMart Online, 2026-07-20) can be disputed. - Reason
+                code: `goods_not_received` - Filing window: 90 days from the transaction date, per …
+      turn 3    U: What is my daily card limit?
+                A: Your daily transfer limit on the tier1 account is EUR 5,000. As of today
+                (2026-09-15), you have not used any of it, so the full EUR 5,000 is available. For …
+                ~ agent.summarize ran on this turn
+      turn 4    U: And the FX spread if I pay in USD?
+                A: Your Tier 1 FX spread is 1.5% over the mid-market rate. Verta's tariff schedule
+                also gives a free monthly conversion allowance of EUR 500. Within that allowance,  …
+      turn 5    U: Back to the original charge: repeat its exact amount, currency and reason code,
+                then explain the next step. Do not file anything.
+                A: The disputed charge is: - Transaction: TX-0401, TechMart Online, 2026-07-20 -
+                Amount: EUR 240.00 - Reason code: `goods_not_received` The earlier eligibility che …
+      turn 6    U: The amount is 240 euro, as I said at the start.
+                A: You're right, the amount is EUR 240.00, which matches the transaction record for
+                TX-0401. Nothing has been filed. If you want to proceed, I'll run a fresh …
+      turn 7    U: For that original charge, state its applicable filing window in days and the
+                exact filing deadline. Do I still have time? Do not file anything.
+                A: Yes, you still have time. - Filing window: 90 days from the transaction date
+                (2026-07-20) - Filing deadline: 2026-10-18 - Status as of today (2026-09-15): The …
+      checks    T3      ok   precondition: agent.summarize is in the trace
+                T5      ok   dispute_amount_eur still holds [D06]
+                T5      ok   reason_code still holds [D07]
+                T5      ok   reason_code: no substitute [D07]
+                T7      ok   filing_window_days still holds [D07]
+                T1      ok   initial oracle: transaction amount
+                T1      ok   initial oracle: scenario reason code
+                T2      ok   initial oracle: filing window
+                T7      ok   independent oracle: filing deadline
+      runs      5/5 runs passed; first failing turn per run: -, -, -, -, -
+
+PASS  CONV-H02   L4 memory      dialog  25.2s, 188275 tokens over 5 runs, last run shown
+      turn 1    U: Transaction TX-0401, 240.00 EUR: the goods never arrived. Confirm its amount and
+                currency and name the single applicable reason code. We are only discussing this …
+                A: TX-0401 details: - Amount: 240.00 EUR (matches your description) - Merchant:
+                TechMart Online - Date: 2026-07-20 - Status: Settled Applicable reason code: …
+      turn 2    U: Can I dispute that charge? State the applicable reason code and filing window in
+                days; do not file anything.
+                A: TX-0401 (240.00 EUR, TechMart Online, 2026-07-20) can be disputed. - Reason code:
+                `goods_not_received` - Filing window: 90 days from the transaction date - Deadline …
+      turn 3    U: What are my daily card limit and FX spread for USD payments?
+                A: Daily limit: Your tier1 daily transfer limit on file is EUR 5,000. Nothing has
+                been spent today, so the full amount is available. Your monthly limit is EUR 50,00 …
+                ~ agent.summarize ran on this turn
+      turn 4    U: Back to the original charge: repeat its exact amount, currency and reason code,
+                then explain the next step. Do not file anything.
+                A: TX-0401 (TechMart Online, 2026-07-20) - Amount: 240.00 EUR - Currency: EUR -
+                Reason code: `goods_not_received` Next step: Nothing has been filed. The eligibili …
+      turn 5    U: For that original charge, state its applicable filing window in days and the
+                exact filing deadline. Do I still have time? Do not file anything.
+                A: Filing window: 90 days from the transaction date. Exact deadline: 2026-10-18.
+                This is 90 days after TX-0401 on 2026-07-20. Do you still have time? Yes. The …
+      checks    T3      ok   precondition: agent.summarize is in the trace
+                T4      ok   dispute_amount_eur still holds [D06]
+                T4      ok   reason_code still holds [D07]
+                T4      ok   reason_code: no substitute [D07]
+                T5      ok   filing_window_days still holds [D07]
+                T1      ok   initial oracle: transaction amount
+                T1      ok   initial oracle: scenario reason code
+                T2      ok   initial oracle: filing window
+                T5      ok   independent oracle: filing deadline
+      runs      5/5 runs passed; first failing turn per run: -, -, -, -, -
+
+FAIL  CONV-H03   L4 memory      dialog  39.0s, 453841 tokens over 5 runs, last run shown
+      turn 1    U: Transaction TX-0401, 240.00 EUR: the goods never arrived. Confirm its amount and
+                currency and name the single applicable reason code. We are only discussing this …
+                A: Transaction TX-0401 is for 240.00 EUR, a settled card payment to TechMart Online
+                on 2026-07-20, debited from account ACC-1005. The single applicable reason code is …
+      turn 2    U: Can I dispute that charge? State the applicable reason code and filing window in
+                days; do not file anything.
+                A: Yes, TX-0401 is eligible for a dispute under the reason code goods_not_received.
+                - Filing window: 90 days from the transaction date (2026-07-20). - Deadline: …
+      turn 3    U: What is my daily card limit?
+                A: Your daily transfer limit on the tier1 account is EUR 5,000.00. As of today
+                (2026-09-15) you have spent EUR 0.00 of it, so EUR 5,000.00 remains. For reference …
+                ~ agent.summarize ran on this turn
+      turn 4    U: And the FX spread if I pay in USD?
+                A: For a Tier 1 account, the FX spread on a EUR-to-USD conversion is 1.5% of the
+                converted amount. The spread applies only after the free monthly conversion …
+      turn 5    U: How do card payments differ from SEPA transfers?
+                A: Here is how the two differ, based on the knowledge base: Card payments - These
+                are outgoing payments to a merchant. - A percentage fee applies to the EUR …
+      turn 6    U: What should I check before making an international transfer?
+                A: Before sending an international (SWIFT) transfer, check these points: - Fees: A
+                SWIFT transfer has a flat fee of EUR 15.00 plus 0.3% of the EUR equivalent of the …
+      turn 7    U: Explain what a conversion spread means in plain language.
+                A: A conversion spread is the extra margin your bank adds to the exchange rate when
+                it converts one currency into another. Exchange rates are quoted at a "mid-market" …
+      turn 8    U: Back to the original charge: repeat its exact amount, currency and reason code,
+                then explain the next step. Do not file anything.
+                A: Original charge (TX-0401): - Amount: EUR 240.00 - Currency: EUR - Reason code:
+                goods_not_received Next step: Nothing has been filed. The dispute eligibility chec …
+      turn 9    U: The amount is 240 euro, as I said at the start.
+                A: Thank you, that matches both TechMart charges. TX-0401 (2026-07-20) and TX-0402
+                (2026-07-14) are each EUR 240.00 to TechMart Online, so the amount alone doesn't …
+      turn 10   U: For that original charge, state its applicable filing window in days and the
+                exact filing deadline. Do I still have time? Do not file anything.
+                A: Filing window for TX-0401: 90 days from the transaction date (source:
+                disputes.md). Exact filing deadline: 2026-10-18. Do you still have time? Yes. The …
+      checks    T3      ok   precondition: agent.summarize is in the trace
+                T8      ok   dispute_amount_eur still holds [D06]
+                T8      ok   reason_code still holds [D07]
+                T8      FAIL reason_code: no substitute [D07] -> forbidden pattern matched 'which
+                charge'
+                T10     ok   filing_window_days still holds [D07]
+                T1      ok   initial oracle: transaction amount
+                T1      ok   initial oracle: scenario reason code
+                T2      ok   initial oracle: filing window
+                T10     ok   independent oracle: filing deadline
+      runs      4/5 runs passed; first failing turn per run: -, -, -, -, 8; median 8, range 8-8
+
+PASS  CONV-H04   L4 memory      dialog  39.4s, 262194 tokens over 5 runs, last run shown
+      turn 1    U: Transaction TX-0401, 240.00 EUR: the goods never arrived. Confirm its amount and
+                currency and name the single applicable reason code. We are only discussing this …
+                A: Transaction TX-0401 is confirmed as 240.00 EUR, a settled card payment to
+                TechMart Online on 2026-07-20, debited from account ACC-1005. The applicable reaso …
+      turn 2    U: Can I dispute that charge? State the applicable reason code and filing window in
+                days; do not file anything.
+                A: TX-0401 (240.00 EUR, TechMart Online, 2026-07-20) can be disputed under the
+                reason code goods_not_received. - Filing window: 90 days from the transaction date …
+      turn 3    U: For this same charge, what evidence of non-delivery should I keep?
+                A: For TX-0401 (240.00 EUR, TechMart Online, 2026-07-20), keep the following
+                evidence of non-delivery: 1. Order confirmation showing what you bought, the price …
+                ~ agent.summarize ran on this turn
+      turn 4    U: What information about this same charge would be needed to review a dispute?
+                A: To review a dispute for TX-0401 (240.00 EUR, TechMart Online, 2026-07-20), Verta
+                needs: 1. Transaction reference: TX-0401. 2. Reason code: goods_not_received, whic …
+      turn 5    U: Back to the original charge: repeat its exact amount, currency and reason code,
+                then explain the next step. Do not file anything.
+                A: The charge is 240.00 EUR (TX-0401, TechMart Online, 2026-07-20), and the reason
+                code is goods_not_received. No dispute has been opened. The next step is yours. If …
+      turn 6    U: The amount is 240 euro, as I said at the start.
+                A: You're right. TX-0401 is for 240.00 EUR, as shown in your transaction history. I
+                had already stated that amount correctly. Your history also shows a second charge: …
+      turn 7    U: For that original charge, state its applicable filing window in days and the
+                exact filing deadline. Do I still have time? Do not file anything.
+                A: The filing window for goods_not_received is 90 days from the transaction date.
+                For TX-0401 (2026-07-20), the filing deadline is 2026-10-18. The eligibility check …
+      checks    T3      ok   precondition: agent.summarize is in the trace
+                T5      ok   dispute_amount_eur still holds [D06]
+                T5      ok   reason_code still holds [D07]
+                T5      ok   reason_code: no substitute [D07]
+                T7      ok   filing_window_days still holds [D07]
+                T1      ok   initial oracle: transaction amount
+                T1      ok   initial oracle: scenario reason code
+                T2      ok   initial oracle: filing window
+                T7      ok   independent oracle: filing deadline
+      runs      5/5 runs passed; first failing turn per run: -, -, -, -, -
+
+PASS  CONV-H05   L4 memory      dialog  34.5s, 401428 tokens over 5 runs, last run shown
+      turn 1    U: Transaction TX-0401, 240.00 EUR: the goods never arrived. Confirm its amount and
+                currency and name the single applicable reason code. We are only discussing this …
+                A: TX-0401 is confirmed as follows: - Amount: 240.00 EUR - Date: 2026-07-20 (kept
+                with the case) - Merchant: TechMart Online - Status: Settled, card payment, outgoi …
+      turn 2    U: Can I dispute that charge? State the applicable reason code and filing window in
+                days; do not file anything.
+                A: Yes, TX-0401 is eligible for a dispute. I have not filed anything. - Reason code:
+                `goods_not_received` - Filing window: 90 days from the transaction date of …
+      turn 3    U: What is my daily card limit?
+                A: Your daily limit on file for your tier (tier1) is EUR 5,000. As of 2026-09-15: -
+                Daily limit: EUR 5,000.00. Spent today: EUR 0.00. Remaining today: EUR 5,000.00. - …
+                ~ agent.summarize ran on this turn
+      turn 4    U: And my FX spread for USD payments?
+                A: I couldn't find the spread percentage for USD conversions on tier1 in our
+                documentation, so I can't state it. What I can confirm from the conversion guide:  …
+      turn 5    U: Back to the original charge: repeat its exact amount, currency and reason code,
+                then explain the next step. Do not file anything.
+                A: Transaction TX-0401 - Amount: 240.00 EUR - Currency: EUR - Reason code:
+                `goods_not_received` Dispute eligibility was checked on 2026-09-15 and passed. The …
+      turn 6    U: How much of my monthly transfer limit remains?
+                A: As of 2026-09-15, you have EUR 49,964.50 remaining of your EUR 50,000.00 monthly
+                transfer limit. You have used EUR 35.50 this month.
+      turn 7    U: What are the public SWIFT transfer fee components?
+                A: A SWIFT transfer fee has two components, from the Verta tariff schedule and fee
+                details: - Flat fee: EUR 15.00 - Percentage fee: 0.3% of the EUR equivalent of the …
+      turn 8    U: Back to the original charge: repeat its exact amount, currency and reason code,
+                then explain the next step. Do not file anything. Also repeat the original …
+                A: Transaction TX-0401 - Amount: 240.00 EUR - Currency: EUR - Reason code:
+                `goods_not_received` - Transaction date: 2026-07-20 Eligibility was checked on …
+      turn 9    U: The amount is 240 euro, as I said at the start.
+                A: You're right. The record shows TX-0401 for 240.00 EUR, which matches what you
+                said. No dispute has been filed. If you want to proceed, confirm and I will open i …
+      turn 10   U: For that original charge, state its applicable filing window in days and the
+                exact filing deadline. Do I still have time? Do not file anything.
+                A: Filing window: 90 days from the transaction date. Exact filing deadline:
+                2026-10-18 (90 days after the 2026-07-20 transaction date). Do you still have time …
+      checks    T3      ok   precondition: agent.summarize is in the trace
+                T5      ok   dispute_amount_eur still holds [D06]
+                T8      ok   dispute_amount_eur still holds [D06]
+                T5      ok   reason_code still holds [D07]
+                T8      ok   reason_code still holds [D07]
+                T5      ok   reason_code: no substitute [D07]
+                T8      ok   reason_code: no substitute [D07]
+                T10     ok   filing_window_days still holds [D07]
+                T8      ok   transaction_date still holds [D06]
+                T1      ok   initial oracle: transaction amount
+                T1      ok   initial oracle: scenario reason code
+                T2      ok   initial oracle: filing window
+                T10     ok   independent oracle: filing deadline
+      runs      5/5 runs passed; first failing turn per run: -, -, -, -, -
+
+------------------------------------------------------------------------
+4/5 passed   elapsed 851.3s
+  memory       4/5
+failed: CONV-H03
+report -> evals/reports/l05_dialogs-clean-20261017T210413.json
+
